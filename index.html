@@ -1,147 +1,87 @@
 <!doctype html>
-<html lang="en">
+<html lang="km">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090914">
-  <meta name="description" content="NEXOR builds practical apps, web tools, and gaming utilities.">
-  <title>NEXOR — Build Beyond Limits</title>
-  <style>
-    :root{color-scheme:dark;--bg:#080812;--panel:#111124;--line:#292846;--text:#f4f2ff;--muted:#aaa7c5;--purple:#9b7bff;--cyan:#66e7ff}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(ellipse at 80% 0%,#251447 0,transparent 38%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(1080px,92%);margin:auto}
-    header{position:sticky;top:0;z-index:5;background:#080812dc;backdrop-filter:blur(14px);border-bottom:1px solid #292846}
-    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
-    .brand{font-weight:900;letter-spacing:.18em;font-size:1.18rem}.brand span{color:var(--purple)}
-    .navlinks{display:flex;gap:18px;font-size:.9rem;color:var(--muted)}
-    .navlinks a:hover,.textlink:hover{color:var(--cyan)}
-    .hero{padding:86px 0 66px;display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:36px}
-    .eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #51417d;border-radius:999px;padding:6px 12px;color:#d5c8ff;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}
-    h1{font-size:clamp(2.8rem,8vw,5.4rem);line-height:.98;letter-spacing:-.055em;margin:22px 0}
-    h1 em{font-style:normal;color:var(--purple)}
-    .lead{color:var(--muted);font-size:1.08rem;max-width:610px}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-    .btn{display:inline-flex;justify-content:center;align-items:center;padding:12px 18px;border-radius:12px;border:1px solid var(--line);font-weight:700}
-    .primary{background:linear-gradient(110deg,#9877ff,#5a54d6);border-color:transparent;color:white;box-shadow:0 8px 28px #7e61ff35}
-    .secondary{background:#ffffff06}.btn:hover{transform:translateY(-2px)}
-    .hero-card{border:1px solid #42376c;background:linear-gradient(145deg,#1a1632,#0d0d1b 70%);border-radius:26px;padding:25px;min-height:280px;position:relative;overflow:hidden}
-    .orb{width:170px;height:170px;border-radius:50%;margin:12px auto 20px;background:radial-gradient(circle at 30% 25%,#e8ddff,#9a7bff 22%,#5030b5 52%,#111124 73%);box-shadow:0 0 60px #9b7bff55}
-    .hero-card strong{display:block;text-align:center;font-size:1.25rem;letter-spacing:.15em}
-    .hero-card p{text-align:center;color:var(--muted);margin:4px 0}
-    section{padding:45px 0}
-    .section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}
-    h2{font-size:clamp(1.8rem,5vw,2.5rem);line-height:1.1;margin:0;letter-spacing:-.035em}
-    .section-head p{color:var(--muted);margin:8px 0 0}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-    .card{background:linear-gradient(160deg,#15152a,#0d0d19);border:1px solid var(--line);border-radius:18px;padding:21px;min-height:210px}
-    .icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:#8c70ff20;border:1px solid #5c4c95;color:var(--cyan);font-size:1.25rem}
-    .card h3{margin:15px 0 7px;font-size:1.12rem}
-    .card p{color:var(--muted);font-size:.94rem;margin:0 0 16px}
-    .tag{display:inline-block;font-size:.75rem;color:#d7ceff;border:1px solid #393253;border-radius:999px;padding:3px 9px;margin:3px 4px 0 0}
-    .textlink{font-weight:700;color:#c5b4ff;font-size:.9rem}
-    .about{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-    .aboutbox,.contactbox{border:1px solid var(--line);border-radius:20px;padding:25px;background:#11111f}
-    .aboutbox p,.contactbox p{color:var(--muted)}
-    .services{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
-    .service{padding:14px;border-radius:12px;background:#ffffff05;border:1px solid #292846}
-    .service b{display:block}.service small{color:var(--muted)}
-    .contact{background:radial-gradient(ellipse at 20% 20%,#29194b,transparent 65%)}
-    .contactbox{display:flex;justify-content:space-between;align-items:center;gap:20px}
-    footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:.85rem}
-    .footrow{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    @media(max-width:760px){.hero{grid-template-columns:1fr;padding:60px 0 35px}.hero-card{min-height:230px}.orb{width:130px;height:130px}.grid{grid-template-columns:1fr}.about{grid-template-columns:1fr}.contactbox{align-items:flex-start;flex-direction:column}.navlinks{gap:10px;font-size:.8rem}.navlinks a:nth-child(2){display:none}.section-head{align-items:flex-start;flex-direction:column}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100b20">
+<title>NEXOR Gaming Top Up</title>
+<style>
+:root{--bg:#0b0815;--panel:#151026;--panel2:#1d1633;--purple:#9b5cff;--pink:#ff5cce;--text:#f7f2ff;--muted:#b8aecb;--line:#34274e;--green:#76f0bb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at top,#21123e 0,#0b0815 52%);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans Khmer",sans-serif;line-height:1.55}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.wrap{width:min(1100px,92%);margin:auto}.top{position:sticky;top:0;z-index:5;background:#0b0815eF;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0}.brand{font-weight:900;letter-spacing:1.5px;font-size:1.25rem}.brand span{color:var(--purple)}.navright{display:flex;gap:8px;align-items:center}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,var(--purple),#713bcb);color:white;font-weight:750;box-shadow:0 5px 20px #8d4dff26}.btn.secondary{background:var(--panel2);border:1px solid var(--line);box-shadow:none}.btn.danger{background:#4b1b35;border:1px solid #8c345f;box-shadow:none}.hero{padding:54px 0 30px;display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:center}.tag{display:inline-block;border:1px solid #65449a;background:#25163c;color:#d9c4ff;padding:5px 10px;border-radius:99px;font-size:.85rem}.hero h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.12;margin:15px 0}.grad{background:linear-gradient(90deg,#bca0ff,#ff86db);background-clip:text;color:transparent}.muted{color:var(--muted)}.hero-card,.card,.box{background:linear-gradient(145deg,#1a1230,#100d1c);border:1px solid var(--line);border-radius:20px;padding:20px}.hero-card{min-height:205px;display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(circle at 80% 20%,#713bbd70,transparent 50%),linear-gradient(145deg,#1a1230,#100d1c)}.orb{font-size:3rem}.section{padding:26px 0}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}.section h2{margin:0;font-size:1.55rem}.games{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:16px;display:flex;flex-direction:column;gap:10px}.gameicon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:#2a1b45;font-size:1.7rem}.card h3{margin:0}.small{font-size:.88rem}.price{font-weight:800;color:#e5d5ff}.price.unset{font-weight:600;color:#ffce8c}.card .btn{margin-top:auto;width:100%}.layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:grid;gap:6px;margin:10px 0}.field label{font-size:.92rem;color:#e4d9f5}.field input,.field select,.field textarea{width:100%;background:#0c0915;color:var(--text);border:1px solid #49375f;border-radius:10px;padding:11px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--purple)}.cartrow,.orderrow{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.qty{display:flex;align-items:center;gap:8px}.qty button{background:#2b2040;color:white;border-radius:8px;width:28px;height:28px}.notice{border:1px solid #6e5129;background:#2a2114;color:#ffe0a7;padding:12px;border-radius:12px;font-size:.9rem}.success{border:1px solid #276a52;background:#10271f;color:#aaf5d6;padding:12px;border-radius:12px}.admin{margin-top:8px}.hidden{display:none!important}.empty{text-align:center;padding:24px;color:var(--muted)}footer{border-top:1px solid var(--line);margin-top:35px;padding:25px 0;color:var(--muted);font-size:.9rem}.footrow{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.badge{font-size:.75rem;padding:3px 7px;border-radius:99px;background:#2d2046;color:#d7c0ff}.status{border:1px solid var(--line);background:#211832;color:#eadfff;border-radius:8px;padding:6px;max-width:145px}.order-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.order-actions .btn{padding:7px 10px;font-size:.82rem}.total{display:flex;justify-content:space-between;font-size:1.1rem;font-weight:800;padding-top:12px}.counter{background:#ff5cce;color:#1b0920;border-radius:99px;padding:1px 7px;font-size:.8rem}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:34px}.games{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.hero-card{min-height:150px}.sectionhead{align-items:start;flex-direction:column}}@media(max-width:430px){.games{grid-template-columns:1fr}.nav .brand{font-size:1.05rem}.navright .btn{padding:8px 10px;font-size:.85rem}.hero h1{font-size:2.25rem}}
+</style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <nav aria-label="Main navigation">
-      <a class="brand" href="#home">NEX<span>O</span>R</a>
-      <div class="navlinks">
-        <a href="#projects">Projects</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </div>
-</header>
-<main>
-  <div class="wrap">
-    <section class="hero" id="home">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> Independent technology studio</div>
-        <h1>Build beyond<br><em>limits.</em></h1>
-        <p class="lead">NEXOR creates useful digital tools, mobile apps, and web experiences — focused on practical ideas, clean design, and learning through building.</p>
-        <div class="actions">
-          <a class="btn primary" href="#projects">Explore projects ↘</a>
-          <a class="btn secondary" href="#contact">Work with NEXOR</a>
-        </div>
-      </div>
-      <div class="hero-card" aria-label="NEXOR brand graphic">
-        <div class="orb"></div>
-        <strong>N E X O R</strong>
-        <p>Technology • Apps • Web</p>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="section-head"><div><h2>Selected projects</h2><p>Tools and experiments built by NEXOR.</p></div></div>
-      <div class="grid">
-        <article class="card">
-          <div class="icon">◉</div><h3>FPS Meter</h3>
-          <p>A lightweight web project for viewing gaming performance metrics and device information.</p>
-          <span class="tag">Gaming tools</span><span class="tag">Web</span><br><br>
-          <a class="textlink" href="https://ahyakonbong5-create.github.io/Fps-meter/" target="_blank" rel="noopener">Open live demo ↗</a>
-        </article>
-        <article class="card">
-          <div class="icon">⌁</div><h3>NEXOR Internet Toolkit</h3>
-          <p>A web toolkit concept for connection checks, speed tests, DNS comparisons, and network stability.</p>
-          <span class="tag">Networking</span><span class="tag">Web tools</span><br><br>
-          <span class="textlink">Project in progress</span>
-        </article>
-        <article class="card">
-          <div class="icon">⌘</div><h3>Android & App Experiments</h3>
-          <p>Mobile development experiments, Android utilities, and game prototypes built while learning.</p>
-          <span class="tag">Android</span><span class="tag">Java</span><br><br>
-          <span class="textlink">More demos coming soon</span>
-        </article>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="about">
-        <div class="aboutbox">
-          <h2>Small tools.<br><span style="color:var(--purple)">Useful impact.</span></h2>
-          <p>NEXOR is an independent technology project exploring software, gaming utilities, and accessible digital products. The goal is to turn ideas into working demos and keep improving through real feedback.</p>
-        </div>
-        <div class="aboutbox" id="services">
-          <h2>What I can build</h2>
-          <div class="services">
-            <div class="service"><b>Landing pages</b><small>Mobile-friendly business pages</small></div>
-            <div class="service"><b>Portfolio sites</b><small>Personal and creator websites</small></div>
-            <div class="service"><b>Bug fixes</b><small>Small HTML/CSS/JS fixes</small></div>
-            <div class="service"><b>Simple web tools</b><small>Calculators and utility pages</small></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="contactbox">
-        <div>
-          <h2>Have an idea?</h2>
-          <p>Send a short message about your website or app project. I’ll review the requirements and discuss scope before starting.</p>
-        </div>
-        <!-- Replace the example Telegram username below before publishing. -->
-        <a class="btn primary" href="https://github.com/ahyakonbong5-create" target="_blank" rel="noopener">Contact / GitHub ↗</a>
-      </div>
-    </section>
-  </div>
+<header class="top"><div class="wrap nav">
+  <a class="brand" href="#" style="text-decoration:none;color:inherit">NEXOR<span>•</span>GAMING</a>
+  <div class="navright"><button class="btn secondary" onclick="scrollToId('cart')">🛒 កន្ត្រក <span id="cartCount" class="counter">0</span></button><button class="btn secondary" onclick="toggleAdmin()">⚙️ Admin</button></div>
+</div></header>
+<main class="wrap">
+<section class="hero">
+ <div><span class="tag">🎮 Gaming • Top Up • Khmer</span><h1>Level up your game.<br><span class="grad">Power up with NEXOR.</span></h1>
+ <p class="muted">ជ្រើសរើសហ្គេម និងកញ្ចប់ដែលអ្នកចង់បាន។ នេះជាគេហទំព័រ Demo សម្រាប់បង្ហាញផលិតផល និងរៀបចំការបញ្ជាទិញ។</p>
+ <button class="btn" onclick="scrollToId('games')">មើលហ្គេម ↓</button></div>
+ <div class="hero-card"><div class="orb">💎 🎮 ✨</div><div><span class="badge">DEMO STORE</span><h3>Gaming store របស់អ្នក</h3><p class="muted small">ដាក់តម្លៃពិត និងព័ត៌មានទំនាក់ទំនងរបស់អ្នក មុនបើកឱ្យអតិថិជនប្រើ។</p></div></div>
+</section>
+<div class="notice">⚠️ <b>សូមចំណាំ៖</b> តម្លៃមិនទាន់បានកំណត់ទេ។ ការបញ្ជាទិញក្នុង Demo នេះត្រូវបានរក្សាទុកតែក្នុង Browser/ទូរស័ព្ទដែលបានបង្កើតវាប៉ុណ្ណោះ។ វាមិនទាន់មានការទូទាត់ពិត ឬការបញ្ជាទិញទៅម្ចាស់ហាងដោយស្វ័យប្រវត្តិទេ។</div>
+<section id="games" class="section">
+ <div class="sectionhead"><div><span class="tag">OUR GAMES</span><h2 style="margin-top:8px">ជ្រើសរើសហ្គេម</h2></div><span class="muted small">តម្លៃ៖ មិនទាន់កំណត់</span></div>
+ <div class="games" id="gameGrid"></div>
+</section>
+<section id="cart" class="section">
+ <div class="sectionhead"><div><span class="tag">YOUR ORDER</span><h2 style="margin-top:8px">កន្ត្រក និងបញ្ជាទិញ</h2></div></div>
+ <div class="layout">
+  <div class="box"><h3 style="margin-top:0">🛒 កន្ត្រករបស់អ្នក</h3><div id="cartItems"></div><div class="total"><span>សរុប</span><span id="cartTotal">មិនទាន់កំណត់</span></div><p class="muted small">តម្លៃនឹងត្រូវបញ្ជាក់ដោយម្ចាស់ហាង មុនការទូទាត់។</p></div>
+  <form class="box" id="checkoutForm"><h3 style="margin-top:0">🧾 ព័ត៌មានការបញ្ជាទិញ</h3>
+   <div class="field"><label for="customer">ឈ្មោះ ឬ Nickname *</label><input id="customer" required maxlength="80" placeholder="ឈ្មោះរបស់អ្នក"></div>
+   <div class="field"><label for="contact">Telegram username ឬលេខទូរស័ព្ទ *</label><input id="contact" required maxlength="100" placeholder="@username ឬលេខទូរស័ព្ទ"></div>
+   <div class="field"><label for="gameId">Game ID / Player ID *</label><input id="gameId" required maxlength="100" placeholder="បញ្ចូល Player ID"></div>
+   <div class="field"><label for="server">Server ID (បើមាន)</label><input id="server" maxlength="50" placeholder="Server ID"></div>
+   <div class="field"><label for="notes">កំណត់ចំណាំ</label><textarea id="notes" rows="2" maxlength="300" placeholder="កញ្ចប់ដែលចង់បាន ឬព័ត៌មានបន្ថែម"></textarea></div>
+   <button class="btn" style="width:100%" type="submit">បង្កើតការបញ្ជាទិញ Demo</button>
+   <p class="muted small">កុំបញ្ចូល Password ឬ OTP របស់គណនីហ្គេម។</p>
+  </form>
+ </div><div id="checkoutMessage" style="margin-top:12px"></div>
+</section>
+<section id="adminPanel" class="section hidden">
+ <div class="sectionhead"><div><span class="tag">LOCAL ADMIN</span><h2 style="margin-top:8px">គ្រប់គ្រងការបញ្ជាទិញ</h2></div><button class="btn secondary" onclick="exportOrders()">⬇ Export JSON</button></div>
+ <div class="notice">ទិន្នន័យនៅលើ Browser នេះប៉ុណ្ណោះ មិនមាន Login សុវត្ថិភាព ឬ Sync ទៅឧបករណ៍ផ្សេងទេ។ កុំប្រើសម្រាប់ទិន្នន័យអតិថិជនពិត រហូតដល់ភ្ជាប់ Backend ដែលមានសុវត្ថិភាព។</div>
+ <div id="ordersList" style="margin-top:12px"></div>
+ <button class="btn danger" onclick="clearOrders()" style="margin-top:12px">លុបការបញ្ជាទិញទាំងអស់ក្នុង Browser នេះ</button>
+</section>
 </main>
-<footer>
-  <div class="wrap footrow"><span>© <span id="year">2026</span> NEXOR. Built with care.</span><span>Designed for mobile • Hosted with GitHub Pages</span></div>
-</footer>
+<footer><div class="wrap footrow"><span><b>NEXOR•GAMING</b> — Demo store</span><span>Made for mobile 📱 • © <span id="year"></span> NEXOR</span></div></footer>
+<script>
+const PRODUCTS=[
+ {id:"mlbb",name:"Mobile Legends: Bang Bang",icon:"⚔️",desc:"Diamonds / Weekly Pass",price:null},
+ {id:"freefire",name:"Free Fire",icon:"🔥",desc:"Diamonds / Membership",price:null},
+ {id:"pubgm",name:"PUBG Mobile",icon:"🪖",desc:"UC / Royale Pass",price:null},
+ {id:"roblox",name:"Roblox",icon:"🧱",desc:"Robux / Gift options",price:null},
+ {id:"genshin",name:"Genshin Impact",icon:"🌌",desc:"Genesis Crystals",price:null},
+ {id:"other",name:"Other Games",icon:"🎮",desc:"សួរអំពីហ្គេមផ្សេងៗ",price:null}
+];
+const CART_KEY="nexor_demo_cart_v1", ORDERS_KEY="nexor_demo_orders_v1";
+let cart=read(CART_KEY,{}), orders=read(ORDERS_KEY,[]);
+function read(k,f){try{return JSON.parse(localStorage.getItem(k))??f}catch(e){return f}}
+function save(){localStorage.setItem(CART_KEY,JSON.stringify(cart));localStorage.setItem(ORDERS_KEY,JSON.stringify(orders))}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function money(n){return n==null?"មិនទាន់កំណត់":"$"+Number(n).toFixed(2)}
+function renderGames(){document.getElementById("gameGrid").innerHTML=PRODUCTS.map(p=>`<article class="card"><div class="gameicon">${p.icon}</div><h3>${p.name}</h3><div class="muted small">${p.desc}</div><div class="price unset">${money(p.price)}</div><button class="btn" onclick="addCart('${p.id}')">＋ បន្ថែមក្នុងកន្ត្រក</button></article>`).join("")}
+function addCart(id){cart[id]=(cart[id]||0)+1;save();renderCart();document.getElementById("checkoutMessage").innerHTML=""}
+function changeQty(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];save();renderCart()}
+function renderCart(){const entries=Object.entries(cart).filter(([id,q])=>q>0);const count=entries.reduce((a,[id,q])=>a+q,0);document.getElementById("cartCount").textContent=count;document.getElementById("cartItems").innerHTML=entries.length?entries.map(([id,q])=>{const p=PRODUCTS.find(x=>x.id===id);return `<div class="cartrow"><div><b>${p?.icon||"🎮"} ${esc(p?.name||id)}</b><div class="muted small">${money(p?.price)}</div></div><div class="qty"><button type="button" aria-label="បន្ថយ" onclick="changeQty('${id}',-1)">−</button><b>${q}</b><button type="button" aria-label="បន្ថែម" onclick="changeQty('${id}',1)">＋</button></div></div>`}).join(""):'<div class="empty">កន្ត្រកទទេ។ សូមជ្រើសរើសហ្គេមខាងលើ។</div>';document.getElementById("cartTotal").textContent="មិនទាន់កំណត់";renderOrders()}
+function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
+document.getElementById("checkoutForm").addEventListener("submit",e=>{e.preventDefault();if(!Object.keys(cart).length){document.getElementById("checkoutMessage").innerHTML='<div class="notice">សូមបន្ថែមហ្គេមក្នុងកន្ត្រកជាមុនសិន។</div>';return}
+const order={id:"NX-"+Date.now().toString().slice(-8),createdAt:new Date().toISOString(),customer:document.getElementById("customer").value.trim(),contact:document.getElementById("contact").value.trim(),gameId:document.getElementById("gameId").value.trim(),server:document.getElementById("server").value.trim(),notes:document.getElementById("notes").value.trim(),items:Object.entries(cart).map(([id,qty])=>({id,name:PRODUCTS.find(p=>p.id===id)?.name||id,qty})),status:"Pending — រង់ចាំបញ្ជាក់តម្លៃ"};
+orders.unshift(order);cart={};save();renderCart();e.target.reset();document.getElementById("checkoutMessage").innerHTML=`<div class="success"><b>បានបង្កើត Order ${esc(order.id)} ក្នុង Demo រួចហើយ!</b><br>វារក្សាទុកក្នុង Browser នេះប៉ុណ្ណោះ។ ចូល Admin ដើម្បីមើល ឬ Export JSON។ វាមិនបានផ្ញើទៅម្ចាស់ហាងទេ។</div>`;});
+function toggleAdmin(){document.getElementById("adminPanel").classList.toggle("hidden");renderOrders();if(!document.getElementById("adminPanel").classList.contains("hidden"))scrollToId("adminPanel")}
+function renderOrders(){const el=document.getElementById("ordersList");if(!el)return;if(!orders.length){el.innerHTML='<div class="empty box">មិនទាន់មានការបញ្ជាទិញក្នុង Browser នេះទេ។</div>';return}el.innerHTML=orders.map(o=>`<div class="box" style="margin:10px 0"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>${esc(o.id)} · ${esc(o.customer)}</b><span class="badge">${new Date(o.createdAt).toLocaleString()}</span></div><p class="muted small">ទំនាក់ទំនង៖ ${esc(o.contact)} · Player ID៖ ${esc(o.gameId)} ${o.server?'· Server: '+esc(o.server):''}</p><div>${o.items.map(i=>`<div class="small">${esc(i.name)} × ${i.qty}</div>`).join("")}</div><p class="small">កំណត់ចំណាំ៖ ${esc(o.notes||"—")}</p><div class="field"><label>ស្ថានភាព Order</label><select class="status" onchange="setStatus('${o.id}',this.value)">${["Pending — រង់ចាំបញ្ជាក់តម្លៃ","Confirmed — បានបញ្ជាក់","Processing — កំពុងដំណើរការ","Completed — រួចរាល់","Cancelled — បោះបង់"].map(s=>`<option ${o.status===s?"selected":""}>${s}</option>`).join("")}</select></div><div class="order-actions"><button class="btn secondary" onclick="copyOrder('${o.id}')">ចម្លងព័ត៌មាន</button><button class="btn danger" onclick="deleteOrder('${o.id}')">លុប Order</button></div></div>`).join("")}
+function setStatus(id,status){orders=orders.map(o=>o.id===id?{...o,status}:o);save();renderOrders()}
+function deleteOrder(id){if(!confirm("លុប Order នេះពី Browser នេះ?"))return;orders=orders.filter(o=>o.id!==id);save();renderOrders()}
+function clearOrders(){if(!confirm("ប្រាកដថាចង់លុប Order ទាំងអស់មែនទេ?"))return;orders=[];save();renderOrders()}
+function copyOrder(id){const o=orders.find(x=>x.id===id);if(!o)return;const text=`Order: ${o.id}\nCustomer: ${o.customer}\nContact: ${o.contact}\nGame ID: ${o.gameId}\nServer: ${o.server||"-"}\nItems: ${o.items.map(i=>i.name+" x"+i.qty).join(", ")}\nNotes: ${o.notes||"-"}\nStatus: ${o.status}`;if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(()=>alert("បានចម្លង Order!")).catch(()=>prompt("ចម្លងអត្ថបទនេះ៖",text));else prompt("ចម្លងអត្ថបទនេះ៖",text)}
+function exportOrders(){const blob=new Blob([JSON.stringify(orders,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="nexor-orders-demo.json";a.click();URL.revokeObjectURL(url)}
+document.getElementById("year").textContent=new Date().getFullYear();renderGames();renderCart();
+</script>
 </body>
 </html>
