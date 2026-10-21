@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090914">
+  <meta name="description" content="NEXOR builds practical apps, web tools, and gaming utilities.">
+  <title>NEXOR — Build Beyond Limits</title>
+  <style>
+    :root{color-scheme:dark;--bg:#080812;--panel:#111124;--line:#292846;--text:#f4f2ff;--muted:#aaa7c5;--purple:#9b7bff;--cyan:#66e7ff}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(ellipse at 80% 0%,#251447 0,transparent 38%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1080px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:5;background:#080812dc;backdrop-filter:blur(14px);border-bottom:1px solid #292846}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+    .brand{font-weight:900;letter-spacing:.18em;font-size:1.18rem}.brand span{color:var(--purple)}
+    .navlinks{display:flex;gap:18px;font-size:.9rem;color:var(--muted)}
+    .navlinks a:hover,.textlink:hover{color:var(--cyan)}
+    .hero{padding:86px 0 66px;display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:36px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #51417d;border-radius:999px;padding:6px 12px;color:#d5c8ff;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}
+    h1{font-size:clamp(2.8rem,8vw,5.4rem);line-height:.98;letter-spacing:-.055em;margin:22px 0}
+    h1 em{font-style:normal;color:var(--purple)}
+    .lead{color:var(--muted);font-size:1.08rem;max-width:610px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .btn{display:inline-flex;justify-content:center;align-items:center;padding:12px 18px;border-radius:12px;border:1px solid var(--line);font-weight:700}
+    .primary{background:linear-gradient(110deg,#9877ff,#5a54d6);border-color:transparent;color:white;box-shadow:0 8px 28px #7e61ff35}
+    .secondary{background:#ffffff06}.btn:hover{transform:translateY(-2px)}
+    .hero-card{border:1px solid #42376c;background:linear-gradient(145deg,#1a1632,#0d0d1b 70%);border-radius:26px;padding:25px;min-height:280px;position:relative;overflow:hidden}
+    .orb{width:170px;height:170px;border-radius:50%;margin:12px auto 20px;background:radial-gradient(circle at 30% 25%,#e8ddff,#9a7bff 22%,#5030b5 52%,#111124 73%);box-shadow:0 0 60px #9b7bff55}
+    .hero-card strong{display:block;text-align:center;font-size:1.25rem;letter-spacing:.15em}
+    .hero-card p{text-align:center;color:var(--muted);margin:4px 0}
+    section{padding:45px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}
+    h2{font-size:clamp(1.8rem,5vw,2.5rem);line-height:1.1;margin:0;letter-spacing:-.035em}
+    .section-head p{color:var(--muted);margin:8px 0 0}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .card{background:linear-gradient(160deg,#15152a,#0d0d19);border:1px solid var(--line);border-radius:18px;padding:21px;min-height:210px}
+    .icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:#8c70ff20;border:1px solid #5c4c95;color:var(--cyan);font-size:1.25rem}
+    .card h3{margin:15px 0 7px;font-size:1.12rem}
+    .card p{color:var(--muted);font-size:.94rem;margin:0 0 16px}
+    .tag{display:inline-block;font-size:.75rem;color:#d7ceff;border:1px solid #393253;border-radius:999px;padding:3px 9px;margin:3px 4px 0 0}
+    .textlink{font-weight:700;color:#c5b4ff;font-size:.9rem}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .aboutbox,.contactbox{border:1px solid var(--line);border-radius:20px;padding:25px;background:#11111f}
+    .aboutbox p,.contactbox p{color:var(--muted)}
+    .services{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+    .service{padding:14px;border-radius:12px;background:#ffffff05;border:1px solid #292846}
+    .service b{display:block}.service small{color:var(--muted)}
+    .contact{background:radial-gradient(ellipse at 20% 20%,#29194b,transparent 65%)}
+    .contactbox{display:flex;justify-content:space-between;align-items:center;gap:20px}
+    footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:.85rem}
+    .footrow{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    @media(max-width:760px){.hero{grid-template-columns:1fr;padding:60px 0 35px}.hero-card{min-height:230px}.orb{width:130px;height:130px}.grid{grid-template-columns:1fr}.about{grid-template-columns:1fr}.contactbox{align-items:flex-start;flex-direction:column}.navlinks{gap:10px;font-size:.8rem}.navlinks a:nth-child(2){display:none}.section-head{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav aria-label="Main navigation">
+      <a class="brand" href="#home">NEX<span>O</span>R</a>
+      <div class="navlinks">
+        <a href="#projects">Projects</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Independent technology studio</div>
+        <h1>Build beyond<br><em>limits.</em></h1>
+        <p class="lead">NEXOR creates useful digital tools, mobile apps, and web experiences — focused on practical ideas, clean design, and learning through building.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore projects ↘</a>
+          <a class="btn secondary" href="#contact">Work with NEXOR</a>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="NEXOR brand graphic">
+        <div class="orb"></div>
+        <strong>N E X O R</strong>
+        <p>Technology • Apps • Web</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-head"><div><h2>Selected projects</h2><p>Tools and experiments built by NEXOR.</p></div></div>
+      <div class="grid">
+        <article class="card">
+          <div class="icon">◉</div><h3>FPS Meter</h3>
+          <p>A lightweight web project for viewing gaming performance metrics and device information.</p>
+          <span class="tag">Gaming tools</span><span class="tag">Web</span><br><br>
+          <a class="textlink" href="https://ahyakonbong5-create.github.io/Fps-meter/" target="_blank" rel="noopener">Open live demo ↗</a>
+        </article>
+        <article class="card">
+          <div class="icon">⌁</div><h3>NEXOR Internet Toolkit</h3>
+          <p>A web toolkit concept for connection checks, speed tests, DNS comparisons, and network stability.</p>
+          <span class="tag">Networking</span><span class="tag">Web tools</span><br><br>
+          <span class="textlink">Project in progress</span>
+        </article>
+        <article class="card">
+          <div class="icon">⌘</div><h3>Android & App Experiments</h3>
+          <p>Mobile development experiments, Android utilities, and game prototypes built while learning.</p>
+          <span class="tag">Android</span><span class="tag">Java</span><br><br>
+          <span class="textlink">More demos coming soon</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about">
+        <div class="aboutbox">
+          <h2>Small tools.<br><span style="color:var(--purple)">Useful impact.</span></h2>
+          <p>NEXOR is an independent technology project exploring software, gaming utilities, and accessible digital products. The goal is to turn ideas into working demos and keep improving through real feedback.</p>
+        </div>
+        <div class="aboutbox" id="services">
+          <h2>What I can build</h2>
+          <div class="services">
+            <div class="service"><b>Landing pages</b><small>Mobile-friendly business pages</small></div>
+            <div class="service"><b>Portfolio sites</b><small>Personal and creator websites</small></div>
+            <div class="service"><b>Bug fixes</b><small>Small HTML/CSS/JS fixes</small></div>
+            <div class="service"><b>Simple web tools</b><small>Calculators and utility pages</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contactbox">
+        <div>
+          <h2>Have an idea?</h2>
+          <p>Send a short message about your website or app project. I’ll review the requirements and discuss scope before starting.</p>
+        </div>
+        <!-- Replace the example Telegram username below before publishing. -->
+        <a class="btn primary" href="https://github.com/ahyakonbong5-create" target="_blank" rel="noopener">Contact / GitHub ↗</a>
+      </div>
+    </section>
+  </div>
+</main>
+<footer>
+  <div class="wrap footrow"><span>© <span id="year">2026</span> NEXOR. Built with care.</span><span>Designed for mobile • Hosted with GitHub Pages</span></div>
+</footer>
+</body>
+</html>
