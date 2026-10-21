@@ -1,7 +1,480 @@
-// This file contains PUBLIC browser configuration only.
-// Supabase publishable/anon key is expected to be visible in a static website.
-// NEVER put service_role keys, database passwords, bot tokens, or private secrets here.
-window.NEXOR_CONFIG = {
-  SUPABASE_URL: "https://qqhldefrzaoelrsealcr.supabase.co",
-  SUPABASE_ANON_KEY: "sb_publishable_sy-XU8ocYhTWBVvjF0P2ZQ_fEzzRFYT"
-};
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090914">
+  <title>NEXOR STORE — Game Top Up</title>
+  <meta name="description" content="NEXOR gaming top-up store. Choose a game, select a package and submit your order.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090914;
+      --panel: #131326;
+      --purple: #8b5cf6;
+      --cyan: #5ee7ff;
+      --text: #f6f4ff;
+      --muted: #aaa8c4;
+      --border: #292747;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 10% 0%, #30205b 0, transparent 38%),
+        radial-gradient(ellipse at 95% 20%, #102d45 0, transparent 30%),
+        var(--bg);
+      color: var(--text);
+      font-family: system-ui, Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px max(16px, calc((100% - 1100px)/2));
+      background: #090914ed;
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 950;
+      letter-spacing: 3px;
+      color: var(--cyan);
+      text-shadow: 0 0 18px #5ee7ff55;
+    }
+
+    .cart-button, .primary {
+      border: 0;
+      border-radius: 12px;
+      padding: 11px 15px;
+      background: linear-gradient(100deg, #8b5cf6, #6d5cff);
+      color: white;
+      font-weight: 800;
+    }
+
+    main { max-width: 1100px; margin: auto; padding: 22px 16px 60px; }
+
+    .hero {
+      padding: 36px 22px;
+      border: 1px solid #55418b;
+      border-radius: 24px;
+      background: linear-gradient(120deg, #21143eeb, #101d30eb);
+      box-shadow: 0 15px 50px #0005;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    h1 { font-size: clamp(32px, 8vw, 58px); line-height: 1.05; margin: 12px 0; }
+    h1 span { color: var(--cyan); }
+    .muted { color: var(--muted); line-height: 1.65; }
+    .section-title { margin: 32px 0 15px; font-size: 23px; }
+
+    .trust {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .trust div, .panel {
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: #111122c9;
+    }
+
+    .trust strong { display: block; margin-bottom: 5px; }
+    .trust small { color: var(--muted); }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .game {
+      padding: 17px;
+      min-width: 0;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: linear-gradient(145deg, #19172f, #10101f);
+    }
+
+    .game-icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      margin-bottom: 12px;
+      border-radius: 15px;
+      font-size: 27px;
+      background: #292047;
+    }
+
+    .game h3 { margin: 5px 0; font-size: 17px; }
+    .game p { margin: 5px 0 14px; font-size: 12px; color: var(--muted); }
+    .game button { width: 100%; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    label { display: block; font-size: 13px; margin: 13px 0 7px; color: #d8d5f3; }
+    input, select {
+      display: block;
+      width: 100%;
+      min-height: 46px;
+      padding: 11px;
+      border: 1px solid #393552;
+      border-radius: 10px;
+      color: white;
+      background: #0b0b18;
+      outline: none;
+    }
+
+    input:focus, select:focus { border-color: var(--cyan); }
+    .primary { width: 100%; margin-top: 16px; min-height: 46px; }
+    .secondary {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #17152b;
+      color: white;
+      padding: 10px 13px;
+    }
+
+    .price { font-size: 22px; font-weight: 900; color: var(--cyan); }
+    .notice { font-size: 12px; color: var(--muted); line-height: 1.7; }
+    .hidden { display: none !important; }
+    #message { margin-top: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    footer { text-align: center; padding: 25px 15px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+
+    @media (min-width: 700px) {
+      .games { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .hero { padding: 50px 40px; }
+    }
+
+    @media (max-width: 480px) {
+      .trust { grid-template-columns: 1fr; }
+      .layout { grid-template-columns: 1fr; }
+      .logo { font-size: 20px; }
+      main { padding-left: 12px; padding-right: 12px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">NEXOR<span style="color:white">.</span></div>
+  <button class="cart-button" id="cartTop">🛒 Cart (0)</button>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">NEXT LEVEL GAMING</div>
+    <h1>POWER UP<br>YOUR <span>GAME.</span></h1>
+    <p class="muted">
+      Choose your game. Select a package. Submit your order.
+      Fast and simple gaming top-up ordering.
+    </p>
+    <button class="primary" style="max-width:220px" id="browseBtn">Explore games ↓</button>
+    <div class="trust">
+      <div><strong>🎮 Multiple Games</strong><small>Choose your game</small></div>
+      <div><strong>🔒 Order Tracking</strong><small>Submit an order request</small></div>
+      <div><strong>📱 Mobile Ready</strong><small>Designed for your phone</small></div>
+    </div>
+  </section>
+
+  <h2 class="section-title" id="gamesTitle">Choose Your Game</h2>
+  <section class="games" id="games"></section>
+
+  <h2 class="section-title" id="orderTitle">Create Your Order</h2>
+  <section class="layout">
+    <div class="panel">
+      <h3>01 / Select package</h3>
+      <label for="game">Game</label>
+      <select id="game">
+        <option value="Mobile Legends">Mobile Legends</option>
+        <option value="Free Fire">Free Fire</option>
+        <option value="PUBG Mobile">PUBG Mobile</option>
+        <option value="Blood Strike">Blood Strike</option>
+      </select>
+
+      <label for="package">Package</label>
+      <select id="package"></select>
+
+      <p class="muted">Displayed price is an example. Confirm actual prices before accepting orders.</p>
+      <div class="price" id="price">$0.00</div>
+    </div>
+
+    <div class="panel">
+      <h3>02 / Player details</h3>
+      <form id="orderForm">
+        <label for="player">Player ID / UID</label>
+        <input id="player" required maxlength="80" placeholder="Enter your game UID">
+
+        <label for="server">Server / Zone (if needed)</label>
+        <input id="server" maxlength="40" placeholder="e.g. 1234">
+
+        <label for="contact">Telegram username (optional)</label>
+        <input id="contact" maxlength="60" placeholder="@username">
+
+        <button class="primary" type="submit">Submit Order Request</button>
+      </form>
+      <p class="notice">Submitting an order does not mean payment or top-up is completed. Do not enter your game password or OTP.</p>
+    </div>
+  </section>
+
+  <section class="panel hidden" id="cartPanel" style="margin-top:18px">
+    <h2>Your Order</h2>
+    <div id="cartInfo"></div>
+    <button class="secondary" id="removeBtn">Clear order</button>
+  </section>
+
+  <div class="panel hidden" id="message" role="status"></div>
+</main>
+
+<footer>
+  <strong>NEXOR STORE</strong><br>
+  Gaming top-up order requests · © <span id="year"></span> NEXOR
+</footer>
+
+<script src="./config.js"></script>
+<script>
+(() => {
+  "use strict";
+
+  const TELEGRAM_USERNAME = "VOIDSOPHEAK";
+
+  // Example prices only. Replace them with prices you can actually fulfill.
+  const catalog = {
+    "Mobile Legends": [
+      { name: "86 Diamonds", price: 1.50 },
+      { name: "172 Diamonds", price: 3.00 },
+      { name: "Weekly Pass", price: 2.00 }
+    ],
+    "Free Fire": [
+      { name: "100 Diamonds", price: 1.00 },
+      { name: "310 Diamonds", price: 3.00 },
+      { name: "Weekly Membership", price: 2.00 }
+    ],
+    "PUBG Mobile": [
+      { name: "60 UC", price: 1.20 },
+      { name: "325 UC", price: 5.00 },
+      { name: "660 UC", price: 10.00 }
+    ],
+    "Blood Strike": [
+      { name: "Small Gold Pack", price: 1.00 },
+      { name: "Medium Gold Pack", price: 3.00 },
+      { name: "Large Gold Pack", price: 5.00 }
+    ]
+  };
+
+  const $ = id => document.getElementById(id);
+  let currentOrder = null;
+
+  function showMessage(text) {
+    $("message").textContent = text;
+    $("message").classList.remove("hidden");
+  }
+
+  function renderGames() {
+    $("games").innerHTML = "";
+    const icons = {
+      "Mobile Legends": "⚔️",
+      "Free Fire": "🔥",
+      "PUBG Mobile": "🎯",
+      "Blood Strike": "💥"
+    };
+
+    Object.keys(catalog).forEach(name => {
+      const card = document.createElement("article");
+      card.className = "game";
+
+      const icon = document.createElement("div");
+      icon.className = "game-icon";
+      icon.textContent = icons[name];
+
+      const title = document.createElement("h3");
+      title.textContent = name;
+
+      const desc = document.createElement("p");
+      desc.textContent = "Choose a package to get started.";
+
+      const btn = document.createElement("button");
+      btn.className = "secondary";
+      btn.textContent = "Select Game";
+      btn.addEventListener("click", () => {
+        $("game").value = name;
+        renderPackages();
+        $("orderTitle").scrollIntoView({ behavior: "smooth" });
+      });
+
+      card.append(icon, title, desc, btn);
+      $("games").appendChild(card);
+    });
+  }
+
+  function renderPackages() {
+    const selected = $("game").value;
+    $("package").innerHTML = "";
+
+    catalog[selected].forEach((item, index) => {
+      const option = document.createElement("option");
+      option.value = String(index);
+      option.textContent = `${item.name} — $${item.price.toFixed(2)}`;
+      $("package").appendChild(option);
+    });
+
+    updatePrice();
+  }
+
+  function updatePrice() {
+    const item = catalog[$("game").value][Number($("package").value) || 0];
+    $("price").textContent = "$" + item.price.toFixed(2);
+  }
+
+  $("game").addEventListener("change", renderPackages);
+  $("package").addEventListener("change", updatePrice);
+
+  $("browseBtn").addEventListener("click", () => {
+    $("gamesTitle").scrollIntoView({ behavior: "smooth" });
+  });
+
+  $("cartTop").addEventListener("click", () => {
+    if (!currentOrder) {
+      showMessage("Your cart is empty. Select a game and package first.");
+      return;
+    }
+    $("cartPanel").classList.remove("hidden");
+    $("cartPanel").scrollIntoView({ behavior: "smooth" });
+  });
+
+  $("removeBtn").addEventListener("click", () => {
+    currentOrder = null;
+    $("cartPanel").classList.add("hidden");
+    $("cartTop").textContent = "🛒 Cart (0)";
+    showMessage("Order cleared.");
+  });
+
+  $("orderForm").addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const game = $("game").value;
+    const item = catalog[game][Number($("package").value)];
+    const player = $("player").value.trim();
+    const server = $("server").value.trim();
+    const contact = $("contact").value.trim();
+
+    if (!player || !item) {
+      showMessage("Please enter your player ID and choose a package.");
+      return;
+    }
+
+    const order = {
+      game,
+      package_name: item.name,
+      price_usd: item.price,
+      player_id: player,
+      server: server || null,
+      contact: contact || null,
+      status: "pending"
+    };
+
+    const btn = $("orderForm").querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = "Submitting...";
+
+    let dbSaved = false;
+    let dbNote = "Database not configured or order was not saved.";
+
+    try {
+      const cfg = window.NEXOR_CONFIG || {};
+      const url = String(cfg.SUPABASE_URL || "").replace(/\/+$/, "");
+      const key = String(cfg.SUPABASE_ANON_KEY || "");
+
+      if (url.startsWith("https://") && key && !key.includes("PASTE_")) {
+        const response = await fetch(url + "/rest/v1/orders", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": key,
+            "Authorization": "Bearer " + key,
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify(order)
+        });
+
+        if (response.ok) {
+          dbSaved = true;
+          dbNote = "Order saved to the database.";
+        } else {
+          dbNote = "Database rejected the order (HTTP " + response.status + ").";
+        }
+      }
+    } catch (error) {
+      dbNote = "Could not reach the database. Check your internet and Supabase settings.";
+    }
+
+    currentOrder = order;
+    $("cartTop").textContent = "🛒 Cart (1)";
+    $("cartPanel").classList.remove("hidden");
+    $("cartInfo").textContent =
+      `${order.game} — ${order.package_name}\n` +
+      `Price: $${order.price_usd.toFixed(2)}\n` +
+      `Player ID: ${order.player_id}\n` +
+      `Server: ${order.server || "Not provided"}\n` +
+      `Database: ${dbNote}`;
+
+    const telegramText =
+      "NEXOR STORE ORDER REQUEST\n" +
+      "Game: " + order.game + "\n" +
+      "Package: " + order.package_name + "\n" +
+      "Price: $" + order.price_usd.toFixed(2) + "\n" +
+      "Player ID: " + order.player_id + "\n" +
+      "Server: " + (order.server || "Not provided") + "\n" +
+      "Customer Telegram: " + (order.contact || "Not provided") + "\n" +
+      "Database saved: " + (dbSaved ? "Yes" : "No") + "\n" +
+      "Status: PENDING — verify payment and fulfill manually.";
+
+    showMessage(
+      "Order request prepared.\n" + dbNote +
+      "\nTelegram will open next. You must review and press Send yourself."
+    );
+
+    btn.disabled = false;
+    btn.textContent = "Submit Order Request";
+
+    const telegramUrl =
+      "https://t.me/" + TELEGRAM_USERNAME +
+      "?text=" + encodeURIComponent(telegramText);
+
+    window.open(telegramUrl, "_blank", "noopener");
+  });
+
+  $("year").textContent = new Date().getFullYear();
+  renderGames();
+  renderPackages();
+})();
+</script>
+</body>
+      </html>
+      
