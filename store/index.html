@@ -1,0 +1,7 @@
+// This file contains PUBLIC browser configuration only.
+// Supabase publishable/anon key is expected to be visible in a static website.
+// NEVER put service_role keys, database passwords, bot tokens, or private secrets here.
+window.NEXOR_CONFIG = {
+  SUPABASE_URL: "https://qqhldefrzaoelrsealcr.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_sy-XU8ocYhTWBVvjF0P2ZQ_fEzzRFYT"
+};
