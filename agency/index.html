@@ -2,618 +2,423 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0618">
-<meta name="description" content="NEXOR ELITE — Gaming, technology and digital experiences.">
-<title>NEXOR ELITE | Gaming Beyond Limits</title>
-
-<style>
-:root{
-  --bg:#0b0618;
-  --panel:#17102a;
-  --panel2:#21163b;
-  --purple:#8447ff;
-  --cyan:#50ffd0;
-  --pink:#ed69ff;
-  --white:#f9f6ff;
-  --muted:#b8adca;
-  --border:#382650;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:85px}
-body{
-  margin:0;background:var(--bg);color:var(--white);
-  font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
-}
-a{color:inherit;text-decoration:none}
-button,a{-webkit-tap-highlight-color:transparent}
-img{display:block;width:100%}
-.container{width:min(1120px,calc(100% - 36px));margin:auto}
-header{
-  position:sticky;top:0;z-index:20;
-  background:rgba(11,6,24,.92);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid #ffffff12;
-}
-nav{
-  min-height:68px;display:flex;align-items:center;
-  justify-content:space-between;gap:15px;
-}
-.logo{font-size:22px;font-weight:900;font-style:italic;white-space:nowrap}
-.logo span{color:var(--cyan)}
-.navlinks{display:flex;align-items:center;gap:20px;font-size:12px;color:var(--muted)}
-.navlinks a:hover,.footer-links a:hover{color:var(--cyan)}
-.btn{
-  display:inline-flex;justify-content:center;align-items:center;gap:8px;
-  padding:12px 17px;border:1px solid transparent;border-radius:5px;
-  background:var(--cyan);color:#07151a;font-size:11px;font-weight:900;
-  cursor:pointer;transition:.25s;
-}
-.btn:hover{transform:translateY(-3px);box-shadow:0 8px 28px #50ffd033}
-.btn.purple{background:var(--purple);color:white}
-.btn.outline{background:transparent;color:white;border-color:#665080}
-.eyebrow{font-size:10px;letter-spacing:2px;font-weight:900;color:var(--cyan)}
-.gradient{
-  background:linear-gradient(100deg,var(--cyan),#b5a0ff,var(--pink));
-  color:transparent;background-clip:text;-webkit-background-clip:text;
-}
-.hero{padding:70px 0 35px}
-.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:35px}
-h1{font-size:clamp(44px,6.4vw,76px);line-height:.98;letter-spacing:-3px;margin:20px 0}
-.hero-copy .intro{max-width:440px}
-.intro{font-size:14px;line-height:1.9;color:var(--muted)}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
-.hero-art{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.hero-art:before{
-  content:"";position:absolute;inset:15%;
-  background:var(--purple);filter:blur(75px);opacity:.38;z-index:-1;
-}
-.photo{
-  position:relative;overflow:hidden;border:1px solid #ffffff20;
-  border-radius:8px;background:var(--panel2);
-}
-.photo img{height:100%;object-fit:cover;transition:transform .55s}
-.photo:hover img{transform:scale(1.07)}
-.hero-photo{height:300px}
-.photo:after{
-  content:"";position:absolute;inset:35% 0 0;
-  background:linear-gradient(transparent,#100820ef);
-  pointer-events:none;
-}
-.photo-label{position:absolute;z-index:2;bottom:15px;left:13px;font-size:12px;font-weight:900}
-.hero-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:35px;color:#c9bedb;font-size:10px}
-.hero-meta span:first-child{color:var(--cyan)}
-.marquee{
-  overflow:hidden;white-space:nowrap;border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);padding:15px 0;
-  color:#c9bedb;font-size:11px;letter-spacing:2px;
-}
-.marquee-inner{display:inline-block;animation:marquee 24s linear infinite}
-@keyframes marquee{to{transform:translateX(-50%)}}
-.section{padding:65px 0}
-.section-heading{
-  display:flex;justify-content:space-between;align-items:end;
-  gap:15px;margin-bottom:25px;
-}
-.section-heading h2{font-size:clamp(25px,4vw,36px);margin:10px 0}
-.section-heading p{font-size:12px;line-height:1.8;color:var(--muted);margin:0}
-.promo{
-  display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:22px;
-  align-items:center;padding:25px;
-  background:linear-gradient(110deg,#5424c9,#5422a0 55%,#251144);
-  border:1px solid #9b70ff55;border-radius:9px;overflow:hidden;
-}
-.promo h2{font-size:25px;line-height:1.15}
-.promo p{font-size:12px;line-height:1.8;color:#eee5ff}
-.promo-image{height:165px;border-radius:6px;overflow:hidden}
-.promo-image img{height:100%;object-fit:cover}
-.games{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.game{
-  background:var(--panel);border:1px solid var(--border);
-  border-radius:8px;overflow:hidden;transition:.25s;
-}
-.game:hover{transform:translateY(-5px);border-color:var(--purple);box-shadow:0 12px 35px #6c35ff19}
-.game-image{height:220px;position:relative;overflow:hidden}
-.game-image img{height:100%;object-fit:cover;transition:transform .5s}
-.game:hover .game-image img{transform:scale(1.06)}
-.game-image:after{
-  content:"";position:absolute;inset:35% 0 0;
-  background:linear-gradient(transparent,#17102af5);
-}
-.tag{
-  position:absolute;z-index:2;top:12px;left:12px;
-  background:#100820d9;color:var(--cyan);padding:6px 8px;
-  font-size:9px;font-weight:900;border-radius:3px;
-}
-.game-name{position:absolute;z-index:2;bottom:13px;left:13px;font-size:19px;font-weight:900}
-.game-body{padding:15px}
-.game-body h3{font-size:14px;margin:0 0 8px}
-.game-body p{font-size:11px;color:var(--muted);line-height:1.8;margin:0 0 13px}
-.text-link{font-size:10px;color:var(--cyan);font-weight:900}
-.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.tech-card{
-  text-align:center;padding:26px 17px;background:var(--panel);
-  border:1px solid var(--border);border-radius:8px;transition:.25s;
-}
-.tech-card:hover{border-color:var(--cyan);transform:translateY(-3px)}
-.tech-icon{
-  display:grid;place-items:center;width:52px;height:52px;margin:0 auto 16px;
-  border-radius:14px;background:#3b2565;font-size:25px;
-}
-.tech-card h3{font-size:14px}
-.tech-card p{font-size:11px;color:var(--muted);line-height:1.8}
-.feature{
-  display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;
-  background:linear-gradient(120deg,#21143b,#110a20);
-  border:1px solid var(--border);padding:22px;border-radius:9px;
-}
-.feature-image{height:290px;overflow:hidden;border-radius:6px}
-.feature-image img{height:100%;object-fit:cover}
-.feature h2{font-size:clamp(27px,4vw,42px);line-height:1.15}
-.feature p{font-size:13px;line-height:1.9;color:var(--muted)}
-.stats{display:flex;gap:22px;margin-top:23px}
-.stats b{display:block;font-size:21px;color:var(--cyan)}
-.stats span{font-size:9px;color:var(--muted)}
-/* STORE */
-.store-section{background:linear-gradient(180deg,#100820,#0b0618)}
-.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.product{
-  border:1px solid var(--border);background:var(--panel);
-  border-radius:8px;overflow:hidden;transition:.25s;
-}
-.product:hover{border-color:var(--pink);transform:translateY(-4px)}
-.product-image{height:190px;position:relative;overflow:hidden;background:#24133e}
-.product-image img{height:100%;object-fit:cover;transition:transform .4s}
-.product:hover .product-image img{transform:scale(1.05)}
-.product-image .tag{background:#0b0618e8}
-.product-body{padding:16px}
-.product-type{font-size:9px;letter-spacing:1px;color:var(--cyan);font-weight:900}
-.product h3{font-size:15px;margin:10px 0}
-.product p{font-size:11px;line-height:1.8;color:var(--muted);min-height:40px}
-.price-row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:16px 0}
-.price{font-size:20px;font-weight:900;color:var(--cyan)}
-.price-note{font-size:9px;color:var(--muted)}
-.product .btn{width:100%}
-.store-note{
-  border:1px solid #614588;background:#1a102c;border-radius:6px;
-  padding:15px;font-size:11px;line-height:1.8;color:var(--muted);margin-top:18px;
-}
-.blogs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.blog{background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.blog-image{height:210px;overflow:hidden}
-.blog-image img{height:100%;object-fit:cover;transition:transform .4s}
-.blog:hover img{transform:scale(1.05)}
-.blog-body{padding:18px}
-.blog-body h3{font-size:17px;line-height:1.5}
-.blog-body p{font-size:12px;line-height:1.8;color:var(--muted)}
-.cta{
-  padding:45px 22px;text-align:center;border:1px solid #6c46a2;
-  border-radius:9px;background:radial-gradient(ellipse at top,#48258b,#171027 72%);
-}
-.cta h2{font-size:clamp(26px,4vw,40px);margin:14px 0}
-.cta p{font-size:13px;line-height:1.8;color:var(--muted)}
-footer{border-top:1px solid var(--border);padding:32px 0;margin-top:35px}
-.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-footer p{font-size:11px;color:var(--muted)}
-.footer-links{display:flex;gap:17px;flex-wrap:wrap;font-size:11px;color:var(--muted)}
-.reveal{animation:appear .8s ease both}
-@keyframes appear{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@media(min-width:900px){.hero-photo{height:330px}}
-@media(max-width:720px){
- .container{width:calc(100% - 28px)}
- nav{min-height:62px}
- .navlinks{display:none}
- .hero{padding-top:42px}
- .hero-grid{grid-template-columns:1fr;gap:27px}
- .hero-copy{text-align:center}
- .hero-copy .intro{margin:auto}
- .actions,.hero-meta{justify-content:center}
- .hero-photo{height:210px}
- .promo{grid-template-columns:1fr;text-align:center;padding:19px}
- .promo-image{height:190px}
- .section{padding:48px 0}
- .games{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .game-image{height:160px}
- .game-name{font-size:14px;left:9px}
- .game-body{padding:11px}
- .tech-grid{grid-template-columns:1fr}
- .tech-card{padding:22px}
- .feature{grid-template-columns:1fr;padding:14px;gap:12px}
- .feature-image{height:215px}
- .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .product-image{height:145px}
- .product-body{padding:11px}
- .product h3{font-size:13px}
- .product p{font-size:10px}
- .price{font-size:17px}
- .price-row{align-items:start;flex-direction:column}
- .product .btn{font-size:10px;padding:11px 5px}
- .blogs{grid-template-columns:1fr}
- .section-heading{align-items:start}
- .section-heading>.btn{font-size:9px;padding:10px}
-}
-@media(max-width:380px){
- h1{font-size:41px}
- .hero-photo{height:170px}
- .game-image{height:130px}
- .product-image{height:120px}
- .stats{gap:13px}
- .footer-inner{align-items:flex-start;flex-direction:column}
-}
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090713">
+  <meta name="description" content="NEXOR Digital Agency builds modern websites and digital experiences for creators, startups, and businesses in Cambodia.">
+  <meta property="og:title" content="NEXOR Digital Agency">
+  <meta property="og:description" content="Build your next digital experience with NEXOR.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ahyakonbong5-create.github.io/nexor-portfolio/agency/">
+  <link rel="icon" href="https://fav.farm/💜" type="image/png">
+  <title>NEXOR Digital Agency | Websites & Digital Solutions</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090713;
+      --panel: #151124;
+      --text: #f7f4ff;
+      --muted: #b9b3cb;
+      --purple: #a78bfa;
+      --cyan: #67e8f9;
+      --border: rgba(255,255,255,.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 80% 0%, #38205b55, transparent 38%),
+        var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Noto Sans Khmer",
+        "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    .container { width: min(1100px, 90%); margin: auto; }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; padding: 20px 0; flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.35rem; font-weight: 900; letter-spacing: 2px;
+    }
+    .logo span { color: var(--cyan); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-size: .9rem; }
+    .nav-links a:hover { color: var(--cyan); }
+    .lang {
+      border: 1px solid var(--border); border-radius: 10px;
+      background: var(--panel); color: white;
+      padding: 8px 12px; cursor: pointer;
+    }
+    .hero { padding: 90px 0 75px; text-align: center; }
+    .eyebrow {
+      display: inline-block; color: var(--cyan);
+      border: 1px solid #67e8f944; border-radius: 99px;
+      padding: 5px 13px; font-size: .83rem;
+    }
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      line-height: 1.12; letter-spacing: -2px;
+      margin: 24px 0;
+    }
+    .gradient {
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent;
+    }
+    .hero p {
+      max-width: 680px; margin: 0 auto;
+      color: var(--muted); font-size: 1.05rem;
+    }
+    .actions {
+      display: flex; justify-content: center; gap: 12px;
+      flex-wrap: wrap; margin-top: 28px;
+    }
+    .btn {
+      display: inline-flex; justify-content: center; align-items: center;
+      padding: 12px 20px; border-radius: 12px;
+      font-weight: 750; border: 1px solid var(--border);
+      transition: transform .2s, opacity .2s;
+    }
+    .btn:hover { transform: translateY(-2px); opacity: .9; }
+    .primary { background: linear-gradient(100deg, #8b5cf6, #6366f1); }
+    .secondary { background: #ffffff08; }
+    section { padding: 65px 0; }
+    .section-head { max-width: 700px; margin-bottom: 28px; }
+    .section-head h2 { font-size: clamp(1.8rem, 5vw, 2.7rem); line-height: 1.25; margin: 10px 0; }
+    .section-head p, .muted { color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .card {
+      background: linear-gradient(145deg, #1b1630, #100d1d);
+      border: 1px solid var(--border); border-radius: 18px;
+      padding: 24px; min-width: 0;
+    }
+    .icon { font-size: 1.8rem; }
+    .card h3 { margin: 10px 0 7px; }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .tag {
+      display: inline-block; font-size: .76rem; color: var(--cyan);
+      border: 1px solid #67e8f933; border-radius: 7px;
+      padding: 3px 8px; margin-bottom: 8px;
+    }
+    .project { overflow: hidden; padding: 0; }
+    .project-art {
+      min-height: 150px; display: grid; place-items: center;
+      font-size: 2.8rem;
+      background: radial-gradient(circle at 30% 20%, #8b5cf655, transparent 55%), #0c0a16;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-body { padding: 20px; }
+    .project-body h3 { margin-top: 4px; }
+    .note { font-size: .85rem; color: var(--muted); margin-top: 18px; }
+    .about {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+      align-items: center;
+    }
+    .about-panel {
+      padding: 30px; border-radius: 20px;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, #261842, #100d1d);
+    }
+    .about-panel strong { color: var(--cyan); }
+    .faq details {
+      border-bottom: 1px solid var(--border); padding: 17px 0;
+    }
+    .faq summary { cursor: pointer; font-weight: 750; }
+    .faq details p { color: var(--muted); margin-bottom: 0; }
+    .contact {
+      text-align: center; padding: 45px 25px;
+      border: 1px solid #a78bfa44; border-radius: 22px;
+      background: radial-gradient(ellipse at top, #6d28d933, transparent 70%), var(--panel);
+    }
+    footer {
+      border-top: 1px solid var(--border); margin-top: 60px;
+      padding: 25px 0; color: var(--muted); font-size: .88rem;
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    }
+    :focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .about { grid-template-columns: 1fr; }
+      .hero { padding: 60px 0 45px; }
+      .nav { align-items: flex-start; }
+      .nav-right { width: 100%; justify-content: space-between; }
+      .nav-links { gap: 12px; }
+      section { padding: 45px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
 </head>
-
 <body>
-<header>
- <nav class="container">
-  <a class="logo" href="#home">♛ NEXOR<span>.</span></a>
-  <div class="navlinks">
-   <a href="#home">Home</a>
-   <a href="#collections">Games</a>
-   <a href="#tech">Technology</a>
-   <a href="#store">Store</a>
-   <a href="#blogs">Blogs</a>
-  </div>
-  <a class="btn" href="https://t.me/VOIDSOPHEAK">CONTACT ↗</a>
- </nav>
-</header>
+  <header class="container">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo" href="#home" aria-label="NEXOR home">NEX<span>OR</span></a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#services" data-en="Services" data-km="សេវាកម្ម">Services</a>
+          <a href="#projects" data-en="Projects" data-km="គម្រោង">Projects</a>
+          <a href="#about" data-en="About" data-km="អំពីយើង">About</a>
+          <a href="#contact" data-en="Contact" data-km="ទំនាក់ទំនង">Contact</a>
+        </div>
+        <button class="lang" id="langToggle" type="button"
+          aria-label="Switch language" aria-pressed="false">ខ្មែរ</button>
+      </div>
+    </nav>
+  </header>
 
-<main>
-<section class="hero container" id="home">
- <div class="hero-grid">
-  <div class="hero-copy reveal">
-   <div class="eyebrow">✦ WELCOME TO NEXOR ELITE</div>
-   <h1>GAMING<br>BEYOND<br><span class="gradient">LIMITS.</span></h1>
-   <p class="intro">Discover new gaming worlds, explore next-level technology and find inspiration for your ultimate setup. Your next adventure starts here.</p>
-   <div class="actions">
-    <a class="btn" href="#collections">EXPLORE GAMES ↗</a>
-    <a class="btn outline" href="#store">VISIT STORE</a>
-   </div>
-   <div class="hero-meta">
-    <span>✦ BUILT FOR GAMERS</span>
-    <span>⚡ DIGITAL FUTURE</span>
-    <span>◈ NEXOR ELITE</span>
-   </div>
-  </div>
+  <main>
+    <section class="hero container" id="home">
+      <span class="eyebrow" data-en="DIGITAL AGENCY · CAMBODIA"
+        data-km="ឌីជីថល អេជិនស៊ី · កម្ពុជា">DIGITAL AGENCY · CAMBODIA</span>
+      <h1>
+        <span data-en="Build Your" data-km="បង្កើត">Build Your</span><br>
+        <span class="gradient" data-en="Digital Future."
+          data-km="អនាគតឌីជីថលរបស់អ្នក។">Digital Future.</span>
+      </h1>
+      <p data-en="We help creators, startups, and businesses build their online presence with modern websites and practical digital solutions."
+        data-km="យើងជួយអ្នកបង្កើតមាតិកា អាជីវកម្មថ្មី និងក្រុមហ៊ុន បង្កើតវត្តមានលើអ៊ីនធឺណិត តាមរយៈគេហទំព័រទំនើប និងដំណោះស្រាយឌីជីថលជាក់ស្តែង។">
+        We help creators, startups, and businesses build their online presence with modern websites and practical digital solutions.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#contact"
+          data-en="Start a Project ↗" data-km="ចាប់ផ្តើមគម្រោង ↗">Start a Project ↗</a>
+        <a class="btn secondary" href="#projects"
+          data-en="Explore Our Work" data-km="មើលគម្រោង">Explore Our Work</a>
+      </div>
+    </section>
 
-  <div class="hero-art">
-   <article class="photo hero-photo">
-    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=850&q=85" alt="Esports gaming arena">
-    <div class="photo-label">CYBER WARRIORS</div>
-   </article>
-   <article class="photo hero-photo">
-    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=850&q=85" alt="Gaming PC setup">
-    <div class="photo-label">FUTURE GAMING</div>
-   </article>
-  </div>
- </div>
-</section>
+    <section class="container" id="services">
+      <div class="section-head">
+        <span class="eyebrow" data-en="WHAT WE DO" data-km="អ្វីដែលយើងធ្វើ">WHAT WE DO</span>
+        <h2 data-en="Digital solutions built for your goals."
+          data-km="ដំណោះស្រាយឌីជីថល សម្រាប់គោលដៅរបស់អ្នក។">Digital solutions built for your goals.</h2>
+        <p data-en="Practical services for people and businesses ready to grow online."
+          data-km="សេវាកម្មជាក់ស្តែង សម្រាប់អ្នក និងអាជីវកម្មដែលចង់រីកចម្រើនតាមអ៊ីនធឺណិត។">
+          Practical services for people and businesses ready to grow online.
+        </p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="icon">🌐</div>
+          <h3 data-en="Website Development" data-km="បង្កើតគេហទំព័រ">Website Development</h3>
+          <p data-en="Responsive landing pages, portfolios, and business websites."
+            data-km="Landing page, Portfolio និងគេហទំព័រអាជីវកម្មដែលសមនឹងទូរស័ព្ទ។">
+            Responsive landing pages, portfolios, and business websites.
+          </p>
+        </article>
+        <article class="card">
+          <div class="icon">⚙️</div>
+          <h3 data-en="Web Apps & Tools" data-km="Web App និងឧបករណ៍">Web Apps & Tools</h3>
+          <p data-en="Simple web tools and interactive experiences designed around your needs."
+            data-km="ឧបករណ៍ Web និងមុខងារអន្តរកម្ម ដែលរចនាតាមតម្រូវការរបស់អ្នក។">
+            Simple web tools and interactive experiences designed around your needs.
+          </p>
+        </article>
+        <article class="card">
+          <div class="icon">🎨</div>
+          <h3 data-en="UI & Website Refresh" data-km="កែលម្អ UI និងគេហទំព័រ">UI & Website Refresh</h3>
+          <p data-en="Improve layout, readability, mobile usability, and visual identity."
+            data-km="កែលម្អប្លង់ អក្សរ ការប្រើប្រាស់លើទូរស័ព្ទ និងអត្តសញ្ញាណរូបភាព។">
+            Improve layout, readability, mobile usability, and visual identity.
+          </p>
+        </article>
+      </div>
+    </section>
 
-<div class="marquee">
- <div class="marquee-inner">✦ NEXOR ELITE　⚡ LEVEL UP YOUR WORLD　◈ GAMING CULTURE　✦ FUTURE TECHNOLOGY　⚡ LEVEL UP YOUR WORLD　◈ GAMING CULTURE　</div>
-</div>
+    <section class="container" id="projects">
+      <div class="section-head">
+        <span class="eyebrow" data-en="SELECTED WORK" data-km="គម្រោងបង្ហាញ">SELECTED WORK</span>
+        <h2 data-en="A look at what we can build."
+          data-km="មើលឧទាហរណ៍អ្វីដែលយើងអាចបង្កើតបាន។">A look at what we can build.</h2>
+        <p data-en="Concepts and sample projects. Ask us for live demos and current project availability."
+          data-km="គំនិតរចនា និងគម្រោងគំរូ។ សូមសួរយើងអំពី Demo និងស្ថានភាពគម្រោងបច្ចុប្បន្ន។">
+          Concepts and sample projects. Ask us for live demos and current project availability.
+        </p>
+      </div>
+      <div class="grid">
+        <article class="card project">
+          <div class="project-art" aria-hidden="true">💻</div>
+          <div class="project-body">
+            <span class="tag" data-en="CONCEPT" data-km="គំរូ">CONCEPT</span>
+            <h3 data-en="Creator Portfolio" data-km="Portfolio អ្នកបង្កើត">Creator Portfolio</h3>
+            <p data-en="A personal website concept to showcase skills and work."
+              data-km="គំរូគេហទំព័រផ្ទាល់ខ្លួន សម្រាប់បង្ហាញជំនាញ និងស្នាដៃ។">
+              A personal website concept to showcase skills and work.
+            </p>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="project-art" aria-hidden="true">🛍️</div>
+          <div class="project-body">
+            <span class="tag" data-en="CONCEPT" data-km="គំរូ">CONCEPT</span>
+            <h3 data-en="Digital Storefront" data-km="ហាងឌីជីថល">Digital Storefront</h3>
+            <p data-en="A sample product catalog layout for an online business."
+              data-km="គំរូប្លង់បង្ហាញផលិតផល សម្រាប់អាជីវកម្មអនឡាញ។">
+              A sample product catalog layout for an online business.
+            </p>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="project-art" aria-hidden="true">📱</div>
+          <div class="project-body">
+            <span class="tag" data-en="CONCEPT" data-km="គំរូ">CONCEPT</span>
+            <h3 data-en="Mobile-first Landing Page" data-km="Landing Page សម្រាប់ទូរស័ព្ទ">Mobile-first Landing Page</h3>
+            <p data-en="A clean responsive design for introducing a service or idea."
+              data-km="ការរចនាសម្របតាមអេក្រង់ សម្រាប់ណែនាំសេវាកម្ម ឬគំនិត។">
+              A clean responsive design for introducing a service or idea.
+            </p>
+          </div>
+        </article>
+      </div>
+      <p class="note" data-en="These cards describe concepts, not claims of completed client work."
+        data-km="កាតទាំងនេះជាគម្រោងគំរូ មិនមែនជាការអះអាងថាជាការងារអតិថិជនដែលបានបញ្ចប់ទេ។">
+        These cards describe concepts, not claims of completed client work.
+      </p>
+    </section>
 
-<section class="container" style="padding-top:32px">
- <div class="promo">
-  <div>
-   <div class="eyebrow">THE NEXT GENERATION</div>
-   <h2>EXPERIENCE<br>THE NEXT LEVEL</h2>
-   <a class="btn" href="#tech">DISCOVER TECH ↗</a>
-  </div>
-  <div class="promo-image">
-   <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=950&q=85" alt="Gaming desk with computer">
-  </div>
-  <div>
-   <div class="eyebrow">YOUR WORLD. YOUR GAME.</div>
-   <p>Discover gaming inspiration, creative setups and digital experiences made for your next adventure.</p>
-  </div>
- </div>
-</section>
+    <section class="container" id="about">
+      <div class="about">
+        <div>
+          <span class="eyebrow" data-en="ABOUT NEXOR" data-km="អំពី NEXOR">ABOUT NEXOR</span>
+          <h2 data-en="Small beginnings. Big ambition."
+            data-km="ចាប់ផ្តើមតូច តែមានមហិច្ឆតាធំ។">Small beginnings. Big ambition.</h2>
+          <p class="muted" data-en="NEXOR is a growing digital initiative focused on useful, accessible, and modern web experiences. We value clear communication, realistic timelines, and honest project scopes."
+            data-km="NEXOR ជាគម្រោងឌីជីថលដែលកំពុងអភិវឌ្ឍ ដោយផ្តោតលើបទពិសោធន៍គេហទំព័រដែលមានប្រយោជន៍ ងាយប្រើ និងទំនើប។ យើងផ្តល់តម្លៃលើការទំនាក់ទំនងច្បាស់លាស់ ពេលវេលាសមស្រប និងវិសាលភាពការងារដែលស្មោះត្រង់។">
+            NEXOR is a growing digital initiative focused on useful, accessible, and modern web experiences. We value clear communication, realistic timelines, and honest project scopes.
+          </p>
+        </div>
+        <div class="about-panel">
+          <div class="icon">✦</div>
+          <h3 data-en="Our approach" data-km="របៀបធ្វើការរបស់យើង">Our approach</h3>
+          <p data-en="Understand your goal, agree on the scope, build a first version, then test and improve it together."
+            data-km="ស្វែងយល់គោលដៅរបស់អ្នក ព្រមព្រៀងលើវិសាលភាពការងារ បង្កើតកំណែដំបូង រួចសាកល្បង និងកែលម្អជាមួយគ្នា។">
+            Understand your goal, agree on the scope, build a first version, then test and improve it together.
+          </p>
+          <p><strong data-en="Clear scope. Honest communication."
+            data-km="វិសាលភាពច្បាស់លាស់។ ទំនាក់ទំនងស្មោះត្រង់។">Clear scope. Honest communication.</strong></p>
+        </div>
+      </div>
+    </section>
 
-<section class="section container" id="collections">
- <div class="section-heading">
-  <div>
-   <div class="eyebrow">EXCLUSIVE COLLECTIONS</div>
-   <h2>Choose Your Next Adventure</h2>
-   <p>Explore gaming culture and next-generation setups.</p>
-  </div>
-  <a class="btn" href="#store">EXPLORE STORE ↗</a>
- </div>
+    <section class="container faq" id="faq">
+      <div class="section-head">
+        <span class="eyebrow" data-en="FAQ" data-km="សំណួរញឹកញាប់">FAQ</span>
+        <h2 data-en="Before we get started." data-km="មុនពេលចាប់ផ្តើម។">Before we get started.</h2>
+      </div>
+      <details>
+        <summary data-en="How do I request a website?" data-km="តើខ្ញុំស្នើសុំបង្កើត Website ដូចម្តេច?">How do I request a website?</summary>
+        <p data-en="Message us on Telegram with your idea, required features, and budget. We will discuss whether the project is a good fit."
+          data-km="ផ្ញើសារមកយើងតាម Telegram ដោយប្រាប់ពីគំនិត មុខងារដែលត្រូវការ និងថវិកា។ យើងនឹងពិភាក្សាថាតើគម្រោងសមស្របឬអត់។">
+          Message us on Telegram with your idea, required features, and budget. We will discuss whether the project is a good fit.
+        </p>
+      </details>
+      <details>
+        <summary data-en="How much does a website cost?" data-km="Website មានតម្លៃប៉ុន្មាន?">How much does a website cost?</summary>
+        <p data-en="Pricing depends on the pages, features, and complexity. We will confirm the scope and quote before any work begins."
+          data-km="តម្លៃអាស្រ័យលើចំនួនទំព័រ មុខងារ និងភាពស្មុគស្មាញ។ យើងនឹងបញ្ជាក់វិសាលភាព និងតម្លៃមុនចាប់ផ្តើមការងារ។">
+          Pricing depends on the pages, features, and complexity. We will confirm the scope and quote before any work begins.
+        </p>
+      </details>
+      <details>
+        <summary data-en="Do you accept every project?" data-km="តើអ្នកទទួលគ្រប់គម្រោងឬទេ?">Do you accept every project?</summary>
+        <p data-en="No. Availability and technical requirements must be checked first. We will be transparent if we cannot take a project."
+          data-km="មិនមែនទេ។ យើងត្រូវពិនិត្យពេលទំនេរ និងតម្រូវការបច្ចេកទេសជាមុន។ យើងនឹងប្រាប់តាមត្រង់ ប្រសិនបើយើងមិនអាចទទួលគម្រោងបាន។">
+          No. Availability and technical requirements must be checked first. We will be transparent if we cannot take a project.
+        </p>
+      </details>
+      <details>
+        <summary data-en="Can I pay directly on this website?" data-km="តើអាចបង់ប្រាក់ផ្ទាល់លើ Website នេះបានទេ?">Can I pay directly on this website?</summary>
+        <p data-en="This website does not currently process payments. Contact us first to agree on the work and payment arrangements."
+          data-km="បច្ចុប្បន្ន Website នេះមិនទាន់ដំណើរការបង់ប្រាក់ទេ។ សូមទាក់ទងយើងជាមុន ដើម្បីព្រមព្រៀងលើការងារ និងការទូទាត់។">
+          This website does not currently process payments. Contact us first to agree on the work and payment arrangements.
+        </p>
+      </details>
+    </section>
 
- <div class="games">
-  <article class="game">
-   <div class="game-image">
-    <img loading="lazy" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=750&q=80" alt="Esports event">
-    <span class="tag">ESPORTS</span><div class="game-name">CYBER LEGENDS</div>
-   </div>
-   <div class="game-body">
-    <h3>Cyber Legends</h3>
-    <p>Explore competitive gaming and esports culture.</p>
-    <a class="text-link" href="https://t.me/VOIDSOPHEAK">DISCOVER ↗</a>
-   </div>
-  </article>
+    <section class="container" id="contact">
+      <div class="contact">
+        <span class="eyebrow" data-en="LET'S TALK" data-km="ចាប់ផ្តើមពិភាក្សា">LET'S TALK</span>
+        <h2 data-en="Have an idea? Let's build it."
+          data-km="មានគំនិតមែនទេ? តោះបង្កើតវាជាមួយគ្នា។">Have an idea? Let's build it.</h2>
+        <p class="muted" data-en="Tell us what you need. We'll discuss the next steps."
+          data-km="ប្រាប់យើងពីអ្វីដែលអ្នកត្រូវការ។ យើងនឹងពិភាក្សាជំហានបន្ទាប់។">
+          Tell us what you need. We'll discuss the next steps.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="https://t.me/VOIDSOPHEAK"
+            target="_blank" rel="noopener noreferrer"
+            data-en="Contact on Telegram ↗" data-km="ទាក់ទងតាម Telegram ↗">Contact on Telegram ↗</a>
+          <button class="btn secondary" id="copyEmail" type="button"
+            data-en="Copy contact link" data-km="ចម្លងតំណទំនាក់ទំនង">Copy contact link</button>
+        </div>
+        <p class="note" id="copyStatus" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
 
-  <article class="game">
-   <div class="game-image">
-    <img loading="lazy" src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=750&q=80" alt="Gaming monitor setup">
-    <span class="tag">GAMING SETUP</span><div class="game-name">BATTLE ZONE</div>
-   </div>
-   <div class="game-body">
-    <h3>Battle Zone</h3>
-    <p>Get inspired by gaming equipment and modern setups.</p>
-    <a class="text-link" href="https://t.me/VOIDSOPHEAK">DISCOVER ↗</a>
-   </div>
-  </article>
-
-  <article class="game">
-   <div class="game-image">
-    <img loading="lazy" src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=750&q=80" alt="RGB gaming computer">
-    <span class="tag">DIGITAL WORLD</span><div class="game-name">NEON FUTURE</div>
-   </div>
-   <div class="game-body">
-    <h3>Neon Future</h3>
-    <p>Explore futuristic gaming design and creative ideas.</p>
-    <a class="text-link" href="https://t.me/VOIDSOPHEAK">DISCOVER ↗</a>
-   </div>
-  </article>
- </div>
-</section>
-
-<section class="section container" id="tech">
- <div class="section-heading">
-  <div>
-   <div class="eyebrow">FUTURE GAMING TECH</div>
-   <h2>Technology Meets Imagination</h2>
-   <p>Explore ideas that help shape your gaming experience.</p>
-  </div>
- </div>
-
- <div class="tech-grid">
-  <article class="tech-card">
-   <div class="tech-icon">🎮</div>
-   <h3>Gaming Gear</h3>
-   <p>Discover accessories, peripherals and gaming setup ideas.</p>
-  </article>
-  <article class="tech-card">
-   <div class="tech-icon">🥽</div>
-   <h3>Virtual Worlds</h3>
-   <p>Explore immersive experiences and creative digital worlds.</p>
-  </article>
-  <article class="tech-card">
-   <div class="tech-icon">⚡</div>
-   <h3>Performance</h3>
-   <p>Learn about stable gameplay, device settings and technology.</p>
-  </article>
- </div>
-</section>
-
-<section class="section container">
- <div class="feature">
-  <div class="feature-image">
-   <img loading="lazy" src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=950&q=85" alt="Modern gaming setup">
-  </div>
-  <div>
-   <div class="eyebrow">THE FUTURE IS NOW</div>
-   <h2>BUILD YOUR<br><span class="gradient">OWN LEGACY.</span></h2>
-   <p>Gaming is more than playing. It's creativity, technology and a community of people who dream bigger.</p>
-   <a class="btn purple" href="https://t.me/VOIDSOPHEAK">CONNECT WITH NEXOR ↗</a>
-   <div class="stats">
-    <div><b>01</b><span>IMAGINE</span></div>
-    <div><b>02</b><span>CREATE</span></div>
-    <div><b>03</b><span>LEVEL UP</span></div>
-   </div>
-  </div>
- </div>
-</section>
-
-<!-- GAMING STORE: DEMO PRODUCTS AND SAMPLE PRICES -->
-<section class="section store-section" id="store">
- <div class="container">
-  <div class="section-heading">
-   <div>
-    <div class="eyebrow">NEXOR DIGITAL STORE</div>
-    <h2>Gear Up for Greatness</h2>
-    <p>Browse sample gaming products. Contact us to confirm real price and availability.</p>
-   </div>
-  </div>
-
-  <div class="product-grid">
-   <article class="product">
-    <div class="product-image">
-     <img loading="lazy" src="https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=650&q=80" alt="Gaming mouse">
-     <span class="tag">ACCESSORIES</span>
+  <footer>
+    <div class="container footer-inner">
+      <a class="logo" href="#home">NEX<span>OR</span></a>
+      <span data-en="Independent digital initiative · Cambodia"
+        data-km="គម្រោងឌីជីថលឯករាជ្យ · កម្ពុជា">Independent digital initiative · Cambodia</span>
+      <span>© <span id="year"></span> NEXOR</span>
     </div>
-    <div class="product-body">
-     <div class="product-type">GAMING GEAR</div>
-     <h3>Gaming Mouse</h3>
-     <p>A sample listing for a gaming mouse. Final model depends on availability.</p>
-     <div class="price-row"><span class="price">$8.00</span><span class="price-note">Sample price</span></div>
-     <a class="btn order-btn" data-product="Gaming Mouse" data-price="$8.00 sample" href="https://t.me/VOIDSOPHEAK">ASK ABOUT PRODUCT ↗</a>
-    </div>
-   </article>
+  </footer>
 
-   <article class="product">
-    <div class="product-image">
-     <img loading="lazy" src="https://images.unsplash.com/photo-1599669454699-248893623440?auto=format&fit=crop&w=650&q=80" alt="Gaming headset">
-     <span class="tag">AUDIO</span>
-    </div>
-    <div class="product-body">
-     <div class="product-type">GAMING GEAR</div>
-     <h3>Gaming Headset</h3>
-     <p>A sample listing for gaming audio gear with a comfortable design.</p>
-     <div class="price-row"><span class="price">$12.00</span><span class="price-note">Sample price</span></div>
-     <a class="btn order-btn" data-product="Gaming Headset" data-price="$12.00 sample" href="https://t.me/VOIDSOPHEAK">ASK ABOUT PRODUCT ↗</a>
-    </div>
-   </article>
+  <script>
+    (() => {
+      const toggle = document.getElementById("langToggle");
+      const translatable = document.querySelectorAll("[data-en][data-km]");
+      let language = "en";
 
-   <article class="product">
-    <div class="product-image">
-     <img loading="lazy" src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=650&q=80" alt="Gaming controller">
-     <span class="tag">CONTROLLERS</span>
-    </div>
-    <div class="product-body">
-     <div class="product-type">GAMING GEAR</div>
-     <h3>Game Controller</h3>
-     <p>A sample controller listing. Check device compatibility before purchase.</p>
-     <div class="price-row"><span class="price">$15.00</span><span class="price-note">Sample price</span></div>
-     <a class="btn order-btn" data-product="Game Controller" data-price="$15.00 sample" href="https://t.me/VOIDSOPHEAK">ASK ABOUT PRODUCT ↗</a>
-    </div>
-   </article>
+      function setLanguage(next) {
+        language = next;
+        document.documentElement.lang = language;
+        translatable.forEach((element) => {
+          element.textContent = element.dataset[language];
+        });
+        toggle.textContent = language === "en" ? "ខ្មែរ" : "English";
+        toggle.setAttribute("aria-pressed", String(language === "km"));
+        document.title = language === "en"
+          ? "NEXOR Digital Agency | Websites & Digital Solutions"
+          : "NEXOR Digital Agency | បង្កើតគេហទំព័រ និងដំណោះស្រាយឌីជីថល";
+      }
 
-   <article class="product">
-    <div class="product-image">
-     <img loading="lazy" src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=650&q=80" alt="Computer components">
-     <span class="tag">HARDWARE</span>
-    </div>
-    <div class="product-body">
-     <div class="product-type">PC COMPONENTS</div>
-     <h3>Gaming Components</h3>
-     <p>Explore PC hardware options. Exact parts and compatibility must be confirmed.</p>
-     <div class="price-row"><span class="price">Ask us</span><span class="price-note">Quote required</span></div>
-     <a class="btn order-btn" data-product="Gaming Components" data-price="Quote required" href="https://t.me/VOIDSOPHEAK">REQUEST A QUOTE ↗</a>
-    </div>
-   </article>
+      toggle.addEventListener("click", () => {
+        setLanguage(language === "en" ? "km" : "en");
+      });
 
-   <article class="product">
-    <div class="product-image">
-     <img loading="lazy" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=650&q=80" alt="Esports gaming">
-     <span class="tag">DIGITAL</span>
-    </div>
-    <div class="product-body">
-     <div class="product-type">GAMING SERVICES</div>
-     <h3>Gaming Services</h3>
-     
-    <p>Ask about potential gaming-related services and current availability.</p>
-    <div class="price-row">
-      <span class="price">Ask us</span>
-      <span class="price-note">Confirm first</span>
-    </div>
-    <a class="btn order-btn"
-       data-product="Gaming Services"
-       data-price="Confirm availability"
-       href="https://t.me/VOIDSOPHEAK">CONTACT US ↗</a>
-   </div>
-  </article>
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-  <article class="product">
-   <div class="product-image">
-    <img loading="lazy"
-      src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=650&q=80"
-      alt="Gaming desk setup">
-    <span class="tag">SETUP</span>
-   </div>
-   <div class="product-body">
-    <div class="product-type">GAMING SPACE</div>
-    <h3>Setup Inspiration</h3>
-    <p>Discuss a gaming setup that fits your device, space and budget.</p>
-    <div class="price-row">
-      <span class="price">Contact</span>
-      <span class="price-note">Custom request</span>
-    </div>
-    <a class="btn order-btn"
-       data-product="Gaming Setup Consultation"
-       data-price="Custom request"
-       href="https://t.me/VOIDSOPHEAK">DISCUSS YOUR SETUP ↗</a>
-   </div>
-  </article>
- </div>
+      document.getElementById("copyEmail").addEventListener("click", async () => {
+        const status = document.getElementById("copyStatus");
+        const link = "https://t.me/VOIDSOPHEAK";
+        try {
+          await navigator.clipboard.writeText(link);
+          status.textContent = language === "en"
+            
+            ? "Telegram link copied."
+            : "បានចម្លងតំណ Telegram រួចហើយ។";
+        } catch {
+          status.textContent = language === "en"
+            ? "Open Telegram using the contact button above."
+            : "សូមចុចប៊ូតុងទំនាក់ទំនងខាងលើ ដើម្បីបើក Telegram។";
+        }
+      });
 
- <div class="store-note">
-  <strong>Important:</strong> These are demonstration listings, not verified offers.
-  Confirm actual prices, availability and payment methods before ordering.
-  This website does not process payments automatically.
- </div>
- </div>
-</section>
-
-<section class="section container" id="blogs">
- <div class="section-heading">
-  <div>
-   <div class="eyebrow">NEXOR INSIGHTS</div>
-   <h2>Inside the Gaming World</h2>
-   <p>Ideas, gaming culture and technology inspiration.</p>
-  </div>
- </div>
-
- <div class="blogs">
-  <article class="blog">
-   <div class="blog-image">
-    <img loading="lazy"
-      src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=850&q=80"
-      alt="Esports gaming event">
-   </div>
-   <div class="blog-body">
-    <div class="eyebrow">GAMING CULTURE</div>
-    <h3>Explore the Next Generation of Gaming</h3>
-    <p>Discover how games, technology and communities create new digital experiences.</p>
-    <a class="text-link" href="https://t.me/VOIDSOPHEAK">DISCUSS WITH NEXOR ↗</a>
-   </div>
-  </article>
-
-  <article class="blog">
-   <div class="blog-image">
-    <img loading="lazy"
-      src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=850&q=80"
-      alt="Gaming computer">
-   </div>
-   <div class="blog-body">
-    <div class="eyebrow">GAMING TECHNOLOGY</div>
-    <h3>Build a Better Gaming Setup</h3>
-    <p>Start with your needs, device compatibility and budget before upgrading.</p>
-    <a class="text-link" href="https://t.me/VOIDSOPHEAK">DISCUSS WITH NEXOR ↗</a>
-   </div>
-  </article>
- </div>
-</section>
-
-<section class="section container">
- <div class="cta">
-  <div class="eyebrow">YOUR NEXT LEVEL STARTS HERE</div>
-  <h2>LET'S BUILD SOMETHING <span class="gradient">EPIC.</span></h2>
-  <p>Have a project, product question or creative idea? Talk to NEXOR.</p>
-  <a class="btn" href="https://t.me/VOIDSOPHEAK">CONTACT NEXOR ON TELEGRAM ↗</a>
- </div>
-</section>
-</main>
-
-<footer>
- <div class="container footer-inner">
-  <div>
-   <a class="logo" href="#home">♛ NEXOR<span>.</span></a>
-   <p>GAMING · TECHNOLOGY · DIGITAL EXPERIENCES</p>
-   <p>© 2026 NEXOR. All rights reserved.</p>
-  </div>
-  <div class="footer-links">
-   <a href="#home">Home</a>
-   <a href="#collections">Games</a>
-   <a href="#store">Store</a>
-   <a href="#blogs">Blogs</a>
-   <a href="https://t.me/VOIDSOPHEAK">Telegram</a>
-  </div>
- </div>
-</footer>
-
-<script>
-document.querySelectorAll(".order-btn").forEach(function(button){
-  button.addEventListener("click",function(event){
-    event.preventDefault();
-
-    var product = button.dataset.product || "Gaming product";
-    var price = button.dataset.price || "Price to confirm";
-
-    var message = "Hello NEXOR! I want to ask about: " +
-      product + ". Listed price: " + price +
-      ". Please confirm actual price, stock and payment options.";
-
-    window.location.href =
-      "https://t.me/VOIDSOPHEAK?text=" + encodeURIComponent(message);
-  });
-});
-</script>
+      setLanguage("en");
+    })();
+  </script>
 </body>
 </html>
