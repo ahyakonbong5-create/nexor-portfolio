@@ -8,6 +8,101 @@
   <meta name="description" content="NEXOR creates modern, responsive websites for businesses, creators and online stores.">
   <title>NEXOR — Web Design & Development</title>
   <style>
+/* NEXOR V2 — visual polish */
+body {
+  background:
+    radial-gradient(ellipse at 15% 10%, #10264a 0, transparent 32%),
+    #080b14;
+  background-attachment: fixed;
+}
+
+.logo {
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 22px #3987ff44;
+}
+
+.hero {
+  min-height: 570px;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 80% 35%, #1559a52e, transparent 42%),
+    linear-gradient(135deg, #080b14, #0b1222);
+}
+
+h1 {
+  text-shadow: 0 5px 35px #3987ff20;
+}
+
+.accent {
+  background: linear-gradient(100deg, #54dcff, #3987ff 60%, #8b80ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.visual {
+  border-color: #3987ff65;
+  box-shadow: 0 20px 80px #126dff20, inset 0 0 35px #3987ff0c;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  transition: transform .22s ease, border-color .22s ease,
+    box-shadow .22s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #3987ff88;
+  box-shadow: 0 16px 35px #0005;
+}
+
+.icon {
+  box-shadow: 0 0 24px #3987ff20;
+}
+
+.project {
+  background:
+    radial-gradient(ellipse at top right, #287dff44, transparent 55%),
+    linear-gradient(135deg, #142d50, #111625);
+  transition: border-color .2s ease;
+}
+
+.featured {
+  background:
+    radial-gradient(ellipse at top right, #3987ff15, transparent 55%),
+    var(--panel);
+}
+
+.btn {
+  box-shadow: 0 5px 20px #3987ff22;
+}
+
+.btn:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+section {
+  scroll-margin-top: 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero { min-height: auto; }
+  .card:hover { transform: none; }
+}
+    
+    
     :root {
       --bg: #080b14;
       --panel: #101625;
