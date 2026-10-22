@@ -3,132 +3,374 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#100927">
-<title>NEXOR Gaming — Level Up</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100820">
+<meta name="description" content="NEXOR Gaming — Explore gaming worlds, digital experiences and next-level technology.">
+<title>NEXOR Gaming — Level Up Your World</title>
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#100927;color:white;font-family:Arial,sans-serif}
-a{text-decoration:none;color:inherit}
-nav{height:72px;max-width:1120px;margin:auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:900;font-size:23px;font-style:italic;letter-spacing:-1px}
-.logo span{color:#4cf5c5}
-.links{display:flex;gap:20px;font-size:12px;color:#c9c0e7}
-.btn{display:inline-block;background:#40f2bd;color:#100927;font-size:11px;font-weight:900;padding:12px 17px;border-radius:4px}
-.hero{max-width:1120px;margin:auto;padding:45px 22px 65px}
-.hero-main{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center;min-height:300px}
-.eyebrow{font-size:10px;color:#55f5c9;letter-spacing:2px;font-weight:bold}
-h1{font-size:clamp(40px,6vw,66px);line-height:.98;margin:20px 0;letter-spacing:-2px}
-p{color:#b6adce;line-height:1.7;font-size:13px}
-.art-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.art{min-height:190px;border-radius:8px;display:flex;align-items:end;padding:15px;overflow:hidden;position:relative;background:radial-gradient(ellipse at 50% 30%,#39d8ff99,transparent 42%),linear-gradient(145deg,#165c96,#27206e 55%,#100927);border:1px solid #6250a7}
-.art:before{content:"";position:absolute;width:100px;height:135px;top:15px;left:50%;transform:translateX(-50%);border-radius:50% 50% 20% 20%;background:linear-gradient(150deg,#8ef9ff,#3b54bc 55%,#12132f);filter:drop-shadow(0 0 22px #35caff88)}
-.art:nth-child(2){background:radial-gradient(ellipse at 50% 30%,#d94cffaa,transparent 42%),linear-gradient(145deg,#642c9c,#251352)}
-.art:nth-child(2):before{background:linear-gradient(150deg,#f0d5ff,#8742e8 55%,#17102c)}
-.art-label{position:relative;z-index:1;font-weight:bold;font-size:12px;text-shadow:0 2px 8px black}
-.promo{margin-top:40px;background:linear-gradient(100deg,#5030d9,#702fea 65%,#351b89);padding:25px;display:grid;grid-template-columns:1fr 1.4fr 1fr;align-items:center;gap:20px;min-height:150px}
-.promo h2{font-size:21px;margin:8px 0}
-.promo .art{min-height:115px}
-.section{max-width:1120px;margin:auto;padding:55px 22px}
-.heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:25px}
-.heading h2{font-size:25px;margin:8px 0}
-.small{font-size:10px;color:#a9a0c9}
-.games{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.game{background:#211544;border:1px solid #38265f;border-radius:7px;overflow:hidden}
-.game-art{height:180px;display:flex;align-items:end;padding:15px;font-weight:900;font-size:18px;background:radial-gradient(ellipse at 50% 20%,#59f2ffbb,transparent 38%),linear-gradient(145deg,#133e77,#5330a5,#15102d)}
-.game:nth-child(2) .game-art{background:radial-gradient(ellipse at 50% 20%,#ff8d49bb,transparent 38%),linear-gradient(145deg,#63254d,#ed5c42,#17102d)}
-.game:nth-child(3) .game-art{background:radial-gradient(ellipse at 50% 20%,#f85dffbb,transparent 38%),linear-gradient(145deg,#263f86,#6727a6,#15102d)}
-.game-info{padding:14px}.game-info p{font-size:11px;margin:7px 0}
-.tech{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.tech-item{padding:20px;text-align:center;border:1px solid #38265f;background:#211544;border-radius:8px}
-.tech-item b{display:block;margin:10px 0}
-.tech-item p{font-size:11px}
-.blogs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.blog{border:1px solid #38265f;background:#211544;border-radius:7px;overflow:hidden}
-.blog-art{height:145px;background:radial-gradient(ellipse at 50% 20%,#48e8ff99,transparent 40%),linear-gradient(120deg,#192f72,#7a2bba,#15102d)}
-.blog:nth-child(2) .blog-art{background:radial-gradient(ellipse at 50% 20%,#ffb84b99,transparent 40%),linear-gradient(120deg,#1d3d7a,#b33476,#15102d)}
-.blog-info{padding:17px}
-footer{text-align:center;padding:35px 20px;border-top:1px solid #38265f;color:#b6adce;font-size:12px}
-@media(max-width:700px){
- .links{display:none}
- .hero-main{grid-template-columns:1fr}
- .art{min-height:150px}
- .promo{grid-template-columns:1fr;text-align:center}
- .promo .art{min-height:100px}
- .games{grid-template-columns:repeat(2,1fr)}
- .game-art{height:145px}
- .tech{grid-template-columns:1fr}
- .heading h2{font-size:22px}
+:root{
+  --bg:#100820;
+  --panel:#20143b;
+  --panel2:#29194a;
+  --purple:#713cff;
+  --cyan:#49f4c7;
+  --text:#fff;
+  --muted:#b8adce;
+  --line:#3a285d;
 }
-@media(max-width:390px){
- .games{grid-template-columns:1fr}
- .hero{padding-top:30px}
- h1{font-size:43px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:75px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+button,a{-webkit-tap-highlight-color:transparent}
+img{display:block;max-width:100%}
+.container{width:min(1120px,calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:#100820ed;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff0a}
+nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-size:23px;font-weight:900;font-style:italic;letter-spacing:-1px;white-space:nowrap}
+.logo span{color:var(--cyan)}
+.navlinks{display:flex;align-items:center;gap:23px;font-size:12px;color:#d0c7e5}
+.navlinks a:hover{color:var(--cyan)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:12px 17px;background:var(--cyan);color:#0c1020;border:0;border-radius:4px;font-size:11px;font-weight:900;transition:transform .2s,filter .2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn.purple{background:var(--purple);color:white}
+.btn.outline{background:transparent;color:white;border:1px solid #756493}
+.eyebrow{font-size:10px;letter-spacing:2px;color:var(--cyan);font-weight:900}
+.hero{padding:58px 0 48px}
+.hero-grid{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:36px}
+h1{font-size:clamp(43px,6vw,69px);line-height:.98;letter-spacing:-2.8px;margin:22px 0}
+.gradient{background:linear-gradient(100deg,#53f4cb,#a58aff);color:transparent;background-clip:text;-webkit-background-clip:text}
+.intro{font-size:14px;color:var(--muted);line-height:1.9;max-width:430px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.hero-art{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative}
+.hero-art:before{content:"";position:absolute;inset:12% 8%;background:#702eff50;filter:blur(65px);z-index:-1}
+.art-card{height:255px;position:relative;overflow:hidden;border:1px solid #6e4d9d;border-radius:8px;background:#25194a}
+.art-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.art-card:hover img{transform:scale(1.06)}
+.art-card:after{content:"";position:absolute;inset:30% 0 0;background:linear-gradient(transparent,#100820eF)}
+.art-caption{position:absolute;bottom:15px;left:14px;right:8px;z-index:1;font-size:12px;font-weight:900}
+.hero-foot{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-top:38px}
+.trust{font-size:9px;color:#9d91b8;letter-spacing:1.3px}
+.brands{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;font-weight:800;color:#ddd4f0}
+.promo{display:grid;grid-template-columns:.9fr 1.2fr .9fr;align-items:center;gap:20px;margin-top:36px;padding:22px;background:linear-gradient(105deg,#5130d8,#7133eb 58%,#382078);overflow:hidden}
+.promo h2{font-size:22px;line-height:1.15;margin:10px 0 17px}
+.promo p{font-size:11px;line-height:1.8}
+.promo-image{height:155px;position:relative;overflow:hidden;border-radius:5px}
+.promo-image img{width:100%;height:100%;object-fit:cover}
+.section{padding:62px 0}
+.section-heading{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:24px}
+.section-heading h2{font-size:clamp(23px,3.3vw,32px);margin:9px 0}
+.section-heading p{font-size:12px;color:var(--muted);margin:8px 0 0}
+.games{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.game{background:var(--panel);border:1px solid #392755;border-radius:7px;overflow:hidden;transition:transform .22s,border-color .22s}
+.game:hover{transform:translateY(-4px);border-color:#8d64ff}
+.game-image{height:235px;position:relative;overflow:hidden;background:#29194b}
+.game-image img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
+.game:hover .game-image img{transform:scale(1.06)}
+.game-image:after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,#160d2bf2)}
+.game-tag{position:absolute;left:13px;top:13px;z-index:1;background:#100820c9;padding:6px 8px;border-radius:3px;font-size:9px;color:var(--cyan);font-weight:bold}
+.game-title{position:absolute;bottom:14px;left:14px;z-index:1;font-size:19px;font-weight:900;text-shadow:0 2px 8px #000}
+.game-info{padding:15px}
+.game-info h3{font-size:14px;margin:0 0 8px}
+.game-info p{font-size:11px;line-height:1.7;color:var(--muted);margin:0 0 13px}
+.text-link{font-size:10px;font-weight:900;color:var(--cyan)}
+.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tech-card{background:var(--panel);border:1px solid #392755;border-radius:7px;padding:24px 18px;text-align:center}
+.tech-icon{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;margin:0 auto 15px;background:#3b2767;font-size:25px}
+.tech-card h3{font-size:14px;margin:8px 0}
+.tech-card p{font-size:11px;line-height:1.8;color:var(--muted)}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:linear-gradient(120deg,#261644,#17102c);border:1px solid #3d285d;padding:22px;border-radius:8px}
+.feature-image{height:270px;overflow:hidden;border-radius:5px}
+.feature-image img{width:100%;height:100%;object-fit:cover}
+.feature h2{font-size:clamp(25px,4vw,38px);line-height:1.15}
+.feature p{font-size:13px;color:var(--muted);line-height:1.9}
+.feature-stats{display:flex;gap:20px;margin-top:22px}
+.feature-stats b{display:block;color:var(--cyan);font-size:20px}
+.feature-stats span{font-size:9px;color:var(--muted)}
+.blogs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.blog{background:var(--panel);border:1px solid #392755;border-radius:7px;overflow:hidden}
+.blog-image{height:205px;overflow:hidden;background:#29194b}
+.blog-image img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.blog:hover img{transform:scale(1.04)}
+.blog-body{padding:18px}
+.blog-body .eyebrow{font-size:9px}
+.blog-body h3{font-size:17px;line-height:1.4}
+.blog-body p{font-size:12px;color:var(--muted);line-height:1.8}
+.cta{padding:42px 25px;text-align:center;background:radial-gradient(ellipse at top,#5330b8,#1a1031 70%);border:1px solid #493271;border-radius:8px}
+.cta h2{font-size:clamp(25px,4vw,38px);margin:12px 0}
+.cta p{font-size:13px;color:var(--muted);line-height:1.8}
+footer{border-top:1px solid #302044;margin-top:45px;padding:35px 0;color:#b6adce}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer p{font-size:11px}
+.footer-links{display:flex;gap:18px;font-size:11px}
+footer a:hover{color:var(--cyan)}
+@media(min-width:900px){
+ .hero{padding-top:76px}
+ .art-card{height:290px}
+ .game-image{height:260px}
+}
+@media(max-width:700px){
+ .container{width:calc(100% - 30px)}
+ nav{height:62px}
+ .navlinks{display:none}
+ .hero{padding-top:36px}
+ .hero-grid{grid-template-columns:1fr;gap:28px}
+ .hero-copy{text-align:center}
+ .intro{margin:0 auto}
+ .actions,.hero-foot,.brands{justify-content:center}
+ .hero-art{max-width:540px;width:100%;margin:auto}
+ .art-card{height:210px}
+ .promo{grid-template-columns:1fr;text-align:center;padding:20px}
+ .promo-image{height:185px}
+ .section{padding:48px 0}
+ .games{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .game-image{height:165px}
+ .game-title{font-size:15px}
+ .game-info{padding:12px}
+ .tech-grid{grid-template-columns:1fr}
+ .tech-card{padding:22px}
+ .feature{grid-template-columns:1fr;padding:15px}
+ .feature-image{height:220px}
+ .blogs{grid-template-columns:1fr}
+ .blog-image{height:210px}
+ .section-heading{align-items:start}
+ .section-heading .btn{font-size:9px;padding:10px}
+}
+@media(max-width:380px){
+ h1{font-size:42px}
+ .art-card{height:170px}
+ .game-image{height:135px}
+ .game-title{font-size:13px;left:9px}
+ .game-info{padding:10px}
+ .game-info h3{font-size:12px}
+ .promo h2{font-size:21px}
+ .footer-inner{flex-direction:column;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{transition:none!important}
 }
 </style>
 </head>
 <body>
-<nav>
-<a class="logo" href="#">♛ NEXOR<span>.</span></a>
-<div class="links"><a href="#home">Home</a><a href="#collections">Collections</a><a href="#tech">Gaming Tech</a><a href="#blogs">Blogs</a></div>
-<a class="btn" href="https://t.me/VOIDSOPHEAK">LET'S PLAY ↗</a>
-</nav>
+<header>
+ <nav class="container">
+  <a class="logo" href="#home">♛ NEXOR<span>.</span></a>
+  <div class="navlinks">
+   <a href="#home">Home</a>
+   <a href="#collections">Collections</a>
+   <a href="#tech">Gaming Tech</a>
+   <a href="#blogs">Blogs</a>
+  </div>
+  <a class="btn" href="https://t.me/VOIDSOPHEAK">LET'S PLAY ↗</a>
+ </nav>
+</header>
 
 <main>
-<section class="hero" id="home">
-<div class="hero-main">
-<div>
-<div class="eyebrow">✦ NEXT LEVEL GAMING</div>
-<h1>GAMING<br>REVOLUTION<br>STARTS <span style="color:#50f5c6">HERE.</span></h1>
-<p>Discover your next adventure. Explore gaming gear, digital experiences and a world built for gamers.</p>
-<a class="btn" href="#collections">EXPLORE NOW ↗</a>
-</div>
-<div class="art-grid">
-<div class="art"><span class="art-label">CYBER WARRIOR</span></div>
-<div class="art"><span class="art-label">FUTURE HERO</span></div>
-</div>
-</div>
+<section class="hero container" id="home">
+ <div class="hero-grid">
+  <div class="hero-copy">
+   <div class="eyebrow">✦ NEXT LEVEL GAMING</div>
+   <h1>GAMING<br>REVOLUTION<br>STARTS <span class="gradient">HERE.</span></h1>
+   <p class="intro">Discover your next adventure. Explore gaming gear, digital experiences and a world built for gamers.</p>
+   <div class="actions">
+    <a class="btn" href="#collections">EXPLORE NOW ↗</a>
+    <a class="btn outline" href="#tech">DISCOVER TECH</a>
+   </div>
+  </div>
+  <div class="hero-art">
+   <article class="art-card">
+    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=700&q=85" alt="Gaming arena and esports setup">
+    <div class="art-caption">CYBER WARRIORS</div>
+   </article>
+   <article class="art-card">
+    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=700&q=85" alt="Gaming monitor and equipment">
+    <div class="art-caption">FUTURE GAMING</div>
+   </article>
+  </div>
+ </div>
 
-<div class="promo">
-<div><div class="small">LEVEL UP YOUR WORLD</div><h2>EXPERIENCE<br>THE NEXT LEVEL</h2><a class="btn" href="#tech">DISCOVER MORE</a></div>
-<div class="art"><span class="art-label">VR GAMING EXPERIENCE</span></div>
-<div><div class="eyebrow">✦ BUILT FOR GAMERS</div><p>Explore new worlds, discover new gear and find your next favorite game.</p></div>
-</div>
+ <div class="hero-foot">
+  <div class="trust">BUILT FOR THE NEXT GENERATION</div>
+  <div class="brands"><span>◈ NEXOR</span><span>⚡ Gaming</span><span>◉ Digital</span><span>✦ Future Tech</span></div>
+ </div>
+
+ <div class="promo">
+  <div>
+   <div class="eyebrow">LEVEL UP YOUR WORLD</div>
+   <h2>EXPERIENCE<br>THE NEXT LEVEL</h2>
+   <a class="btn" href="#collections">DISCOVER MORE ↗</a>
+  </div>
+  <div class="promo-image">
+   <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=900&q=85" alt="Gaming desk and computer setup" loading="lazy">
+  </div>
+  <div>
+   <div class="eyebrow">✦ BUILT FOR GAMERS</div>
+   <p>Explore gaming setups, digital creativity and new ideas for your next adventure.</p>
+  </div>
+ </div>
 </section>
 
-<section class="section" id="collections">
-<div class="heading"><div><div class="eyebrow">EXCLUSIVE COLLECTIONS</div><h2>Choose Your Next Adventure</h2><div class="small">Gaming worlds. Endless possibilities.</div></div><a class="btn" href="https://t.me/VOIDSOPHEAK">VIEW ALL ↗</a></div>
-<div class="games">
-<article class="game"><div class="game-art">CYBER<br>LEGENDS</div><div class="game-info"><b>Cyber Legends</b><p>Enter a futuristic battle world.</p></div></article>
-<article class="game"><div class="game-art">BATTLE<br>ZONE</div><div class="game-info"><b>Battle Zone</b><p>Challenge yourself. Rise higher.</p></div></article>
-<article class="game"><div class="game-art">NEON<br>RACERS</div><div class="game-info"><b>Neon Racers</b><p>Speed into the unknown.</p></div></article>
-</div>
+<section class="section container" id="collections">
+ <div class="section-heading">
+  <div>
+   <div class="eyebrow">EXCLUSIVE COLLECTIONS</div>
+   <h2>Choose Your Next Adventure</h2>
+   <p>Explore gaming worlds and find your next inspiration.</p>
+  </div>
+  <a class="btn" href="#blogs">VIEW MORE ↗</a>
+ </div>
+
+ <div class="games">
+  <article class="game">
+   <div class="game-image">
+    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=85" alt="Esports gaming arena" loading="lazy">
+    <span class="game-tag">ESPORTS</span>
+    <div class="game-title">CYBER LEGENDS</div>
+   </div>
+   <div class="game-info">
+    <h3>Cyber Legends</h3>
+    <p>Enter a world of competitive gaming and digital adventure.</p>
+    <a class="text-link" href="https://t.me/VOIDSOPHEAK">EXPLORE ↗</a>
+   </div>
+  </article>
+
+  <article class="game">
+   <div class="game-image">
+    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=800&q=85" alt="RGB gaming computer" loading="lazy">
+    <span class="game-tag">GAMING SETUP</span>
+    <div class="game-title">BATTLE ZONE</div>
+   </div>
+   <div class="game-info">
+    <h3>Battle Zone</h3>
+    <p>Discover gaming equipment and ideas for your setup.</p>
+    <a class="text-link" href="https://t.me/VOIDSOPHEAK">EXPLORE ↗</a>
+   </div>
+  </article>
+
+  <article class="game">
+   <div class="game-image">
+    <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=800&q=85" alt="Neon-lit gaming desk" loading="lazy">
+    <span class="game-tag">DIGITAL WORLD</span>
+    <div class="game-title">NEON RACERS</div>
+   </div>
+   <div class="game-info">
+    <h3>Neon Racers</h3>
+    <p>Get inspired by futuristic colors, hardware and design.</p>
+    <a class="text-link" href="https://t.me/VOIDSOPHEAK">EXPLORE ↗</a>
+   </div>
+  </article>
+ </div>
 </section>
 
-<section class="section" id="tech">
-<div class="heading"><div><div class="eyebrow">FUTURE GAMING TECH</div><h2>Built for the Next Level</h2></div></div>
-<div class="tech">
-<div class="tech-item"><div style="font-size:30px">🎮</div><b>Gaming Gear</b><p>Discover equipment and accessories for your setup.</p></div>
-<div class="tech-item"><div style="font-size:30px">🥽</div><b>Virtual Worlds</b><p>Explore immersive gaming experiences.</p></div>
-<div class="tech-item"><div style="font-size:30px">⚡</div><b>Performance</b><p>Find ideas to improve your gaming space.</p></div>
-</div>
+<section class="section container" id="tech">
+ <div class="section-heading">
+  <div>
+   <div class="eyebrow">FUTURE GAMING TECH</div>
+   <h2>Technology Meets Imagination</h2>
+   <p>Ideas for your next-generation gaming experience.</p>
+  </div>
+ </div>
+
+ <div class="tech-grid">
+  <article class="tech-card">
+   <div class="tech-icon">🎮</div>
+   <h3>Gaming Gear</h3>
+   <p>Explore gaming accessories, setups and equipment ideas.</p>
+  </article>
+  <article class="tech-card">
+   <div class="tech-icon">🥽</div>
+   <h3>Virtual Worlds</h3>
+   <p>Discover immersive experiences and creative digital worlds.</p>
+  </article>
+  <article class="tech-card">
+   <div class="tech-icon">⚡</div>
+   <h3>Performance</h3>
+   <p>Learn about smooth gameplay and better gaming setups.</p>
+  </article>
+ </div>
 </section>
 
-<section class="section" id="blogs">
-<div class="heading"><div><div class="eyebrow">OUR RECENT BLOGS</div><h2>Inside the Gaming World</h2></div></div>
-<div class="blogs">
-<article class="blog"><div class="blog-art"></div><div class="blog-info"><b>Discover the Future of Gaming</b><p>Explore new trends and ideas from the gaming universe.</p><a class="btn" href="https://t.me/VOIDSOPHEAK">READ MORE ↗</a></div></article>
-<article class="blog"><div class="blog-art"></div><div class="blog-info"><b>Build Your Ultimate Setup</b><p>Ideas for creating your own gaming environment.</p><a class="btn" href="https://t.me/VOIDSOPHEAK">READ MORE ↗</a></div></article>
-</div>
+<section class="section container">
+ <div class="feature">
+  <div class="feature-image">
+   <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1000&q=85" alt="Modern computer gaming setup" loading="lazy">
+  </div>
+  <div>
+   <div class="eyebrow">THE FUTURE IS NOW</div>
+   <h2>Make Your Setup<br><span class="gradient">Extraordinary.</span></h2>
+   <p>From powerful gaming hardware to immersive digital experiences, find inspiration for the way you play.</p>
+   <a class="btn" href="https://t.me/VOIDSOPHEAK">TALK TO NEXOR ↗</a>
+   <div class="feature-stats">
+    <div><b>01</b><span>YOUR VISION</span></div>
+    <div><b>02</b><span>YOUR SETUP</span></div>
+    <div><b>03</b><span>NEXT LEVEL</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section container" id="blogs">
+ <div class="section-heading">
+  <div>
+   <div class="eyebrow">OUR RECENT BLOGS</div>
+   <h2>Inside the Gaming World</h2>
+   <p>Ideas, inspiration and digital trends for gamers.</p>
+  </div>
+ </div>
+
+ <div class="blogs">
+  <article class="blog">
+   <div class="blog-image">
+    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=85" alt="Esports event" loading="lazy">
+   </div>
+   <div class="blog-body">
+    <div class="eyebrow">GAMING CULTURE</div>
+    <h3>Discover the Future of Gaming</h3>
+    <p>Explore gaming communities, technology and the ideas shaping digital entertainment.</p>
+    <a class="btn" href="https://t.me/VOIDSOPHEAK">READ MORE ↗</a>
+   </div>
+  </article>
+
+  <article class="blog">
+   <div class="blog-image">
+    <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=900&q=85" alt="Gaming room setup" loading="lazy">
+   </div>
+   <div class="blog-body">
+    <div class="eyebrow">SETUP & TECHNOLOGY</div>
+    <h3>Build Your Ultimate Gaming Setup</h3>
+    <p>Get inspiration for a gaming space that fits your style, budget and favorite games.</p>
+    <a class="btn" href="https://t.me/VOIDSOPHEAK">READ MORE ↗</a>
+   </div>
+  </article>
+ </div>
+</section>
+
+<section class="section container">
+ <div class="cta">
+  <div class="eyebrow">READY TO LEVEL UP?</div>
+  <h2>Let's Build Something <span class="gradient">Amazing.</span></h2>
+  <p>Have a project or idea? Contact NEXOR and let's discuss your next digital experience.</p>
+  <a class="btn" href="https://t.me/VOIDSOPHEAK">CONTACT NEXOR ON TELEGRAM ↗</a>
+ </div>
 </section>
 </main>
 
 <footer>
-<div class="logo">♛ NEXOR<span style="color:#4cf5c5">.</span></div>
-<p>LEVEL UP YOUR DIGITAL WORLD.</p>
-<a href="https://t.me/VOIDSOPHEAK">Contact NEXOR on Telegram ↗</a>
-<p>© 2026 NEXOR</p>
+ <div class="container footer-inner">
+  <div>
+   <a class="logo" href="#home">♛ NEXOR<span>.</span></a>
+   <p>LEVEL UP YOUR DIGITAL WORLD.</p>
+   <p>© 2026 NEXOR. All rights reserved.</p>
+  </div>
+  <div class="footer-links">
+   <a href="#home">Home</a>
+   <a href="#collections">Collections</a>
+   <a href="#tech">Gaming Tech</a>
+   <a href="https://t.me/VOIDSOPHEAK">Contact</a>
+  </div>
+ </div>
 </footer>
 </body>
-</html>
+     </html>
+     
