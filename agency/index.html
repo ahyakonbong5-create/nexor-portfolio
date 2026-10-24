@@ -2,423 +2,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090713">
-  <meta name="description" content="NEXOR Digital Agency builds modern websites and digital experiences for creators, startups, and businesses in Cambodia.">
-  <meta property="og:title" content="NEXOR Digital Agency">
-  <meta property="og:description" content="Build your next digital experience with NEXOR.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ahyakonbong5-create.github.io/nexor-portfolio/agency/">
-  <link rel="icon" href="https://fav.farm/💜" type="image/png">
-  <title>NEXOR Digital Agency | Websites & Digital Solutions</title>
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #090713;
-      --panel: #151124;
-      --text: #f7f4ff;
-      --muted: #b9b3cb;
-      --purple: #a78bfa;
-      --cyan: #67e8f9;
-      --border: rgba(255,255,255,.12);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background:
-        radial-gradient(ellipse at 80% 0%, #38205b55, transparent 38%),
-        var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, "Noto Sans Khmer",
-        "Segoe UI", sans-serif;
-      line-height: 1.7;
-    }
-    a { color: inherit; text-decoration: none; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    button { font: inherit; }
-    .container { width: min(1100px, 90%); margin: auto; }
-    .nav {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 14px; padding: 20px 0; flex-wrap: wrap;
-    }
-    .logo {
-      font-size: 1.35rem; font-weight: 900; letter-spacing: 2px;
-    }
-    .logo span { color: var(--cyan); }
-    .nav-right { display: flex; align-items: center; gap: 16px; }
-    .nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
-    .nav-links a { color: var(--muted); font-size: .9rem; }
-    .nav-links a:hover { color: var(--cyan); }
-    .lang {
-      border: 1px solid var(--border); border-radius: 10px;
-      background: var(--panel); color: white;
-      padding: 8px 12px; cursor: pointer;
-    }
-    .hero { padding: 90px 0 75px; text-align: center; }
-    .eyebrow {
-      display: inline-block; color: var(--cyan);
-      border: 1px solid #67e8f944; border-radius: 99px;
-      padding: 5px 13px; font-size: .83rem;
-    }
-    h1 {
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      line-height: 1.12; letter-spacing: -2px;
-      margin: 24px 0;
-    }
-    .gradient {
-      background: linear-gradient(90deg, var(--purple), var(--cyan));
-      -webkit-background-clip: text; background-clip: text;
-      color: transparent;
-    }
-    .hero p {
-      max-width: 680px; margin: 0 auto;
-      color: var(--muted); font-size: 1.05rem;
-    }
-    .actions {
-      display: flex; justify-content: center; gap: 12px;
-      flex-wrap: wrap; margin-top: 28px;
-    }
-    .btn {
-      display: inline-flex; justify-content: center; align-items: center;
-      padding: 12px 20px; border-radius: 12px;
-      font-weight: 750; border: 1px solid var(--border);
-      transition: transform .2s, opacity .2s;
-    }
-    .btn:hover { transform: translateY(-2px); opacity: .9; }
-    .primary { background: linear-gradient(100deg, #8b5cf6, #6366f1); }
-    .secondary { background: #ffffff08; }
-    section { padding: 65px 0; }
-    .section-head { max-width: 700px; margin-bottom: 28px; }
-    .section-head h2 { font-size: clamp(1.8rem, 5vw, 2.7rem); line-height: 1.25; margin: 10px 0; }
-    .section-head p, .muted { color: var(--muted); }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
-    .card {
-      background: linear-gradient(145deg, #1b1630, #100d1d);
-      border: 1px solid var(--border); border-radius: 18px;
-      padding: 24px; min-width: 0;
-    }
-    .icon { font-size: 1.8rem; }
-    .card h3 { margin: 10px 0 7px; }
-    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
-    .tag {
-      display: inline-block; font-size: .76rem; color: var(--cyan);
-      border: 1px solid #67e8f933; border-radius: 7px;
-      padding: 3px 8px; margin-bottom: 8px;
-    }
-    .project { overflow: hidden; padding: 0; }
-    .project-art {
-      min-height: 150px; display: grid; place-items: center;
-      font-size: 2.8rem;
-      background: radial-gradient(circle at 30% 20%, #8b5cf655, transparent 55%), #0c0a16;
-      border-bottom: 1px solid var(--border);
-    }
-    .project-body { padding: 20px; }
-    .project-body h3 { margin-top: 4px; }
-    .note { font-size: .85rem; color: var(--muted); margin-top: 18px; }
-    .about {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
-      align-items: center;
-    }
-    .about-panel {
-      padding: 30px; border-radius: 20px;
-      border: 1px solid var(--border);
-      background: linear-gradient(145deg, #261842, #100d1d);
-    }
-    .about-panel strong { color: var(--cyan); }
-    .faq details {
-      border-bottom: 1px solid var(--border); padding: 17px 0;
-    }
-    .faq summary { cursor: pointer; font-weight: 750; }
-    .faq details p { color: var(--muted); margin-bottom: 0; }
-    .contact {
-      text-align: center; padding: 45px 25px;
-      border: 1px solid #a78bfa44; border-radius: 22px;
-      background: radial-gradient(ellipse at top, #6d28d933, transparent 70%), var(--panel);
-    }
-    footer {
-      border-top: 1px solid var(--border); margin-top: 60px;
-      padding: 25px 0; color: var(--muted); font-size: .88rem;
-    }
-    .footer-inner {
-      display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-    }
-    :focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
-    @media (max-width: 760px) {
-      .grid { grid-template-columns: 1fr; }
-      .about { grid-template-columns: 1fr; }
-      .hero { padding: 60px 0 45px; }
-      .nav { align-items: flex-start; }
-      .nav-right { width: 100%; justify-content: space-between; }
-      .nav-links { gap: 12px; }
-      section { padding: 45px 0; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition: none !important; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090817">
+<meta name="description" content="NEXOR Digital Agency — websites, web tools and responsive digital experiences.">
+<title>NEXOR Agency — Digital Solutions</title>
+<style>
+:root{--bg:#090817;--panel:#121126;--ink:#f7f6ff;--muted:#b3b0c8;--line:#29263f;--purple:#8b5cf6;--cyan:#67e8f9}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;background:radial-gradient(ellipse at 85% 5%,#25164b66,transparent 35%),var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}.wrap{width:min(1100px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#090817eF;backdrop-filter:blur(15px);border-bottom:1px solid #ffffff12}nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:14px}.logo{font-weight:900;font-size:1.35rem;letter-spacing:2px}.logo span{color:var(--cyan)}.links{display:flex;gap:24px;color:var(--muted);font-size:.9rem}.links a:hover{color:var(--cyan)}.toggle,.menu{color:white;background:#151329;border:1px solid var(--line);padding:8px 12px;border-radius:11px}.menu{display:none}
+.hero{text-align:center;padding:105px 0 110px}.eyebrow{display:inline-block;border:1px solid #67e8f933;border-radius:99px;padding:6px 12px;color:var(--cyan);font-size:.8rem;letter-spacing:.05em}.hero h1{font-size:clamp(3rem,8vw,6rem);line-height:1.04;letter-spacing:-.06em;margin:24px 0}.grad{background:linear-gradient(100deg,#a78bfa,#67e8f9);color:transparent;background-clip:text}.hero p{max-width:680px;margin:auto;color:var(--muted);font-size:1.08rem}.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border:1px solid var(--line);border-radius:12px;background:#17142b;font-weight:750;transition:transform .2s,border-color .2s}.btn:hover{transform:translateY(-3px);border-color:var(--purple)}.primary{background:linear-gradient(110deg,#8b5cf6,#6366f1);border-color:transparent}.section{padding:62px 0}.heading{margin-bottom:25px}.heading h2{font-size:clamp(1.8rem,5vw,2.65rem);line-height:1.2;letter-spacing:-.04em;margin:12px 0}.heading p{color:var(--muted);margin:0}.eyetag{display:inline-block;border:1px solid #67e8f92b;border-radius:99px;padding:4px 10px;font-size:.76rem;color:var(--cyan)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.card{background:linear-gradient(145deg,#17142b,#100e20);border:1px solid var(--line);border-radius:20px;padding:24px;transition:transform .25s,border-color .25s,box-shadow .25s}.card:hover{transform:translateY(-5px);border-color:#8b5cf677;box-shadow:0 12px 35px #0003}.icon{font-size:1.6rem;width:49px;height:49px;display:grid;place-items:center;background:#211b3c;border-radius:14px}.card h3{margin:16px 0 7px}.card p{color:var(--muted);font-size:.94rem;margin:0}.project-art{height:105px;border-radius:13px;background:radial-gradient(circle at 50% 35%,#6d28d966,transparent 65%),#100d20;display:grid;place-items:center;font-size:2.2rem;margin-bottom:17px}.tag{display:inline-block;font-size:.75rem;color:var(--cyan);border:1px solid #67e8f926;border-radius:7px;padding:3px 8px;margin-bottom:8px}.note{font-size:.83rem;color:var(--muted);margin-top:15px}.about{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;padding:clamp(24px,5vw,40px);border:1px solid var(--line);border-radius:23px;background:#121126}.about h2{font-size:2rem;line-height:1.2;margin:12px 0}.about p{color:var(--muted)}.values{display:grid;gap:10px;align-content:center}.values div{padding:13px;border:1px solid var(--line);border-radius:12px;background:#0e0c1d}.contact{padding:clamp(26px,5vw,46px);border:1px solid #8b5cf644;border-radius:24px;background:linear-gradient(120deg,#211640,#111027);display:flex;align-items:center;justify-content:space-between;gap:20px}.contact h2{font-size:clamp(1.8rem,5vw,2.7rem);margin:0 0 8px}.contact p{color:var(--muted);margin:0}.contact .btn{flex-shrink:0}footer{border-top:1px solid var(--line);padding:27px 0;color:var(--muted);font-size:.87rem}.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.reveal{opacity:0;transform:translateY(16px);transition:opacity .65s,transform .65s}.reveal.show{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media(max-width:760px){.hero{padding:75px 0 65px}.section{padding:43px 0}.grid{grid-template-columns:1fr}.card{padding:21px}.about{grid-template-columns:1fr}.contact{align-items:flex-start;flex-direction:column}.menu{display:block}.links{display:none;position:absolute;top:71px;left:0;right:0;padding:18px 5%;background:#100e20;border-bottom:1px solid var(--line);flex-direction:column;gap:14px}.links.open{display:flex}}
+</style>
 </head>
 <body>
-  <header class="container">
-    <nav class="nav" aria-label="Main navigation">
-      <a class="logo" href="#home" aria-label="NEXOR home">NEX<span>OR</span></a>
-      <div class="nav-right">
-        <div class="nav-links">
-          <a href="#services" data-en="Services" data-km="សេវាកម្ម">Services</a>
-          <a href="#projects" data-en="Projects" data-km="គម្រោង">Projects</a>
-          <a href="#about" data-en="About" data-km="អំពីយើង">About</a>
-          <a href="#contact" data-en="Contact" data-km="ទំនាក់ទំនង">Contact</a>
-        </div>
-        <button class="lang" id="langToggle" type="button"
-          aria-label="Switch language" aria-pressed="false">ខ្មែរ</button>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero container" id="home">
-      <span class="eyebrow" data-en="DIGITAL AGENCY · CAMBODIA"
-        data-km="ឌីជីថល អេជិនស៊ី · កម្ពុជា">DIGITAL AGENCY · CAMBODIA</span>
-      <h1>
-        <span data-en="Build Your" data-km="បង្កើត">Build Your</span><br>
-        <span class="gradient" data-en="Digital Future."
-          data-km="អនាគតឌីជីថលរបស់អ្នក។">Digital Future.</span>
-      </h1>
-      <p data-en="We help creators, startups, and businesses build their online presence with modern websites and practical digital solutions."
-        data-km="យើងជួយអ្នកបង្កើតមាតិកា អាជីវកម្មថ្មី និងក្រុមហ៊ុន បង្កើតវត្តមានលើអ៊ីនធឺណិត តាមរយៈគេហទំព័រទំនើប និងដំណោះស្រាយឌីជីថលជាក់ស្តែង។">
-        We help creators, startups, and businesses build their online presence with modern websites and practical digital solutions.
-      </p>
-      <div class="actions">
-        <a class="btn primary" href="#contact"
-          data-en="Start a Project ↗" data-km="ចាប់ផ្តើមគម្រោង ↗">Start a Project ↗</a>
-        <a class="btn secondary" href="#projects"
-          data-en="Explore Our Work" data-km="មើលគម្រោង">Explore Our Work</a>
-      </div>
-    </section>
-
-    <section class="container" id="services">
-      <div class="section-head">
-        <span class="eyebrow" data-en="WHAT WE DO" data-km="អ្វីដែលយើងធ្វើ">WHAT WE DO</span>
-        <h2 data-en="Digital solutions built for your goals."
-          data-km="ដំណោះស្រាយឌីជីថល សម្រាប់គោលដៅរបស់អ្នក។">Digital solutions built for your goals.</h2>
-        <p data-en="Practical services for people and businesses ready to grow online."
-          data-km="សេវាកម្មជាក់ស្តែង សម្រាប់អ្នក និងអាជីវកម្មដែលចង់រីកចម្រើនតាមអ៊ីនធឺណិត។">
-          Practical services for people and businesses ready to grow online.
-        </p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <div class="icon">🌐</div>
-          <h3 data-en="Website Development" data-km="បង្កើតគេហទំព័រ">Website Development</h3>
-          <p data-en="Responsive landing pages, portfolios, and business websites."
-            data-km="Landing page, Portfolio និងគេហទំព័រអាជីវកម្មដែលសមនឹងទូរស័ព្ទ។">
-            Responsive landing pages, portfolios, and business websites.
-          </p>
-        </article>
-        <article class="card">
-          <div class="icon">⚙️</div>
-          <h3 data-en="Web Apps & Tools" data-km="Web App និងឧបករណ៍">Web Apps & Tools</h3>
-          <p data-en="Simple web tools and interactive experiences designed around your needs."
-            data-km="ឧបករណ៍ Web និងមុខងារអន្តរកម្ម ដែលរចនាតាមតម្រូវការរបស់អ្នក។">
-            Simple web tools and interactive experiences designed around your needs.
-          </p>
-        </article>
-        <article class="card">
-          <div class="icon">🎨</div>
-          <h3 data-en="UI & Website Refresh" data-km="កែលម្អ UI និងគេហទំព័រ">UI & Website Refresh</h3>
-          <p data-en="Improve layout, readability, mobile usability, and visual identity."
-            data-km="កែលម្អប្លង់ អក្សរ ការប្រើប្រាស់លើទូរស័ព្ទ និងអត្តសញ្ញាណរូបភាព។">
-            Improve layout, readability, mobile usability, and visual identity.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="container" id="projects">
-      <div class="section-head">
-        <span class="eyebrow" data-en="SELECTED WORK" data-km="គម្រោងបង្ហាញ">SELECTED WORK</span>
-        <h2 data-en="A look at what we can build."
-          data-km="មើលឧទាហរណ៍អ្វីដែលយើងអាចបង្កើតបាន។">A look at what we can build.</h2>
-        <p data-en="Concepts and sample projects. Ask us for live demos and current project availability."
-          data-km="គំនិតរចនា និងគម្រោងគំរូ។ សូមសួរយើងអំពី Demo និងស្ថានភាពគម្រោងបច្ចុប្បន្ន។">
-          Concepts and sample projects. Ask us for live demos and current project availability.
-        </p>
-      </div>
-      <div class="grid">
-        <article class="card project">
-          <div class="project-art" aria-hidden="true">💻</div>
-          <div class="project-body">
-            <span class="tag" data-en="CONCEPT" data-km="គំរូ">CONCEPT</span>
-            <h3 data-en="Creator Portfolio" data-km="Portfolio អ្នកបង្កើត">Creator Portfolio</h3>
-            <p data-en="A personal website concept to showcase skills and work."
-              data-km="គំរូគេហទំព័រផ្ទាល់ខ្លួន សម្រាប់បង្ហាញជំនាញ និងស្នាដៃ។">
-              A personal website concept to showcase skills and work.
-            </p>
-          </div>
-        </article>
-        <article class="card project">
-          <div class="project-art" aria-hidden="true">🛍️</div>
-          <div class="project-body">
-            <span class="tag" data-en="CONCEPT" data-km="គំរូ">CONCEPT</span>
-            <h3 data-en="Digital Storefront" data-km="ហាងឌីជីថល">Digital Storefront</h3>
-            <p data-en="A sample product catalog layout for an online business."
-              data-km="គំរូប្លង់បង្ហាញផលិតផល សម្រាប់អាជីវកម្មអនឡាញ។">
-              A sample product catalog layout for an online business.
-            </p>
-          </div>
-        </article>
-        <article class="card project">
-          <div class="project-art" aria-hidden="true">📱</div>
-          <div class="project-body">
-            <span class="tag" data-en="CONCEPT" data-km="គំរូ">CONCEPT</span>
-            <h3 data-en="Mobile-first Landing Page" data-km="Landing Page សម្រាប់ទូរស័ព្ទ">Mobile-first Landing Page</h3>
-            <p data-en="A clean responsive design for introducing a service or idea."
-              data-km="ការរចនាសម្របតាមអេក្រង់ សម្រាប់ណែនាំសេវាកម្ម ឬគំនិត។">
-              A clean responsive design for introducing a service or idea.
-            </p>
-          </div>
-        </article>
-      </div>
-      <p class="note" data-en="These cards describe concepts, not claims of completed client work."
-        data-km="កាតទាំងនេះជាគម្រោងគំរូ មិនមែនជាការអះអាងថាជាការងារអតិថិជនដែលបានបញ្ចប់ទេ។">
-        These cards describe concepts, not claims of completed client work.
-      </p>
-    </section>
-
-    <section class="container" id="about">
-      <div class="about">
-        <div>
-          <span class="eyebrow" data-en="ABOUT NEXOR" data-km="អំពី NEXOR">ABOUT NEXOR</span>
-          <h2 data-en="Small beginnings. Big ambition."
-            data-km="ចាប់ផ្តើមតូច តែមានមហិច្ឆតាធំ។">Small beginnings. Big ambition.</h2>
-          <p class="muted" data-en="NEXOR is a growing digital initiative focused on useful, accessible, and modern web experiences. We value clear communication, realistic timelines, and honest project scopes."
-            data-km="NEXOR ជាគម្រោងឌីជីថលដែលកំពុងអភិវឌ្ឍ ដោយផ្តោតលើបទពិសោធន៍គេហទំព័រដែលមានប្រយោជន៍ ងាយប្រើ និងទំនើប។ យើងផ្តល់តម្លៃលើការទំនាក់ទំនងច្បាស់លាស់ ពេលវេលាសមស្រប និងវិសាលភាពការងារដែលស្មោះត្រង់។">
-            NEXOR is a growing digital initiative focused on useful, accessible, and modern web experiences. We value clear communication, realistic timelines, and honest project scopes.
-          </p>
-        </div>
-        <div class="about-panel">
-          <div class="icon">✦</div>
-          <h3 data-en="Our approach" data-km="របៀបធ្វើការរបស់យើង">Our approach</h3>
-          <p data-en="Understand your goal, agree on the scope, build a first version, then test and improve it together."
-            data-km="ស្វែងយល់គោលដៅរបស់អ្នក ព្រមព្រៀងលើវិសាលភាពការងារ បង្កើតកំណែដំបូង រួចសាកល្បង និងកែលម្អជាមួយគ្នា។">
-            Understand your goal, agree on the scope, build a first version, then test and improve it together.
-          </p>
-          <p><strong data-en="Clear scope. Honest communication."
-            data-km="វិសាលភាពច្បាស់លាស់។ ទំនាក់ទំនងស្មោះត្រង់។">Clear scope. Honest communication.</strong></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="container faq" id="faq">
-      <div class="section-head">
-        <span class="eyebrow" data-en="FAQ" data-km="សំណួរញឹកញាប់">FAQ</span>
-        <h2 data-en="Before we get started." data-km="មុនពេលចាប់ផ្តើម។">Before we get started.</h2>
-      </div>
-      <details>
-        <summary data-en="How do I request a website?" data-km="តើខ្ញុំស្នើសុំបង្កើត Website ដូចម្តេច?">How do I request a website?</summary>
-        <p data-en="Message us on Telegram with your idea, required features, and budget. We will discuss whether the project is a good fit."
-          data-km="ផ្ញើសារមកយើងតាម Telegram ដោយប្រាប់ពីគំនិត មុខងារដែលត្រូវការ និងថវិកា។ យើងនឹងពិភាក្សាថាតើគម្រោងសមស្របឬអត់។">
-          Message us on Telegram with your idea, required features, and budget. We will discuss whether the project is a good fit.
-        </p>
-      </details>
-      <details>
-        <summary data-en="How much does a website cost?" data-km="Website មានតម្លៃប៉ុន្មាន?">How much does a website cost?</summary>
-        <p data-en="Pricing depends on the pages, features, and complexity. We will confirm the scope and quote before any work begins."
-          data-km="តម្លៃអាស្រ័យលើចំនួនទំព័រ មុខងារ និងភាពស្មុគស្មាញ។ យើងនឹងបញ្ជាក់វិសាលភាព និងតម្លៃមុនចាប់ផ្តើមការងារ។">
-          Pricing depends on the pages, features, and complexity. We will confirm the scope and quote before any work begins.
-        </p>
-      </details>
-      <details>
-        <summary data-en="Do you accept every project?" data-km="តើអ្នកទទួលគ្រប់គម្រោងឬទេ?">Do you accept every project?</summary>
-        <p data-en="No. Availability and technical requirements must be checked first. We will be transparent if we cannot take a project."
-          data-km="មិនមែនទេ។ យើងត្រូវពិនិត្យពេលទំនេរ និងតម្រូវការបច្ចេកទេសជាមុន។ យើងនឹងប្រាប់តាមត្រង់ ប្រសិនបើយើងមិនអាចទទួលគម្រោងបាន។">
-          No. Availability and technical requirements must be checked first. We will be transparent if we cannot take a project.
-        </p>
-      </details>
-      <details>
-        <summary data-en="Can I pay directly on this website?" data-km="តើអាចបង់ប្រាក់ផ្ទាល់លើ Website នេះបានទេ?">Can I pay directly on this website?</summary>
-        <p data-en="This website does not currently process payments. Contact us first to agree on the work and payment arrangements."
-          data-km="បច្ចុប្បន្ន Website នេះមិនទាន់ដំណើរការបង់ប្រាក់ទេ។ សូមទាក់ទងយើងជាមុន ដើម្បីព្រមព្រៀងលើការងារ និងការទូទាត់។">
-          This website does not currently process payments. Contact us first to agree on the work and payment arrangements.
-        </p>
-      </details>
-    </section>
-
-    <section class="container" id="contact">
-      <div class="contact">
-        <span class="eyebrow" data-en="LET'S TALK" data-km="ចាប់ផ្តើមពិភាក្សា">LET'S TALK</span>
-        <h2 data-en="Have an idea? Let's build it."
-          data-km="មានគំនិតមែនទេ? តោះបង្កើតវាជាមួយគ្នា។">Have an idea? Let's build it.</h2>
-        <p class="muted" data-en="Tell us what you need. We'll discuss the next steps."
-          data-km="ប្រាប់យើងពីអ្វីដែលអ្នកត្រូវការ។ យើងនឹងពិភាក្សាជំហានបន្ទាប់។">
-          Tell us what you need. We'll discuss the next steps.
-        </p>
-        <div class="actions">
-          <a class="btn primary" href="https://t.me/VOIDSOPHEAK"
-            target="_blank" rel="noopener noreferrer"
-            data-en="Contact on Telegram ↗" data-km="ទាក់ទងតាម Telegram ↗">Contact on Telegram ↗</a>
-          <button class="btn secondary" id="copyEmail" type="button"
-            data-en="Copy contact link" data-km="ចម្លងតំណទំនាក់ទំនង">Copy contact link</button>
-        </div>
-        <p class="note" id="copyStatus" role="status" aria-live="polite"></p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <a class="logo" href="#home">NEX<span>OR</span></a>
-      <span data-en="Independent digital initiative · Cambodia"
-        data-km="គម្រោងឌីជីថលឯករាជ្យ · កម្ពុជា">Independent digital initiative · Cambodia</span>
-      <span>© <span id="year"></span> NEXOR</span>
-    </div>
-  </footer>
-
-  <script>
-    (() => {
-      const toggle = document.getElementById("langToggle");
-      const translatable = document.querySelectorAll("[data-en][data-km]");
-      let language = "en";
-
-      function setLanguage(next) {
-        language = next;
-        document.documentElement.lang = language;
-        translatable.forEach((element) => {
-          element.textContent = element.dataset[language];
-        });
-        toggle.textContent = language === "en" ? "ខ្មែរ" : "English";
-        toggle.setAttribute("aria-pressed", String(language === "km"));
-        document.title = language === "en"
-          ? "NEXOR Digital Agency | Websites & Digital Solutions"
-          : "NEXOR Digital Agency | បង្កើតគេហទំព័រ និងដំណោះស្រាយឌីជីថល";
-      }
-
-      toggle.addEventListener("click", () => {
-        setLanguage(language === "en" ? "km" : "en");
-      });
-
-      document.getElementById("year").textContent = new Date().getFullYear();
-
-      document.getElementById("copyEmail").addEventListener("click", async () => {
-        const status = document.getElementById("copyStatus");
-        const link = "https://t.me/VOIDSOPHEAK";
-        try {
-          await navigator.clipboard.writeText(link);
-          status.textContent = language === "en"
-            
-            ? "Telegram link copied."
-            : "បានចម្លងតំណ Telegram រួចហើយ។";
-        } catch {
-          status.textContent = language === "en"
-            ? "Open Telegram using the contact button above."
-            : "សូមចុចប៊ូតុងទំនាក់ទំនងខាងលើ ដើម្បីបើក Telegram។";
-        }
-      });
-
-      setLanguage("en");
-    })();
-  </script>
+<header><nav class="wrap">
+<a class="logo" href="#home">NEX<span>OR</span>.</a>
+<div class="links" id="links"><a href="#services" data-en="Services" data-km="សេវាកម្ម">Services</a><a href="#projects" data-en="Projects" data-km="គម្រោង">Projects</a><a href="#about" data-en="About" data-km="អំពីយើង">About</a><a href="#contact" data-en="Contact" data-km="ទំនាក់ទំនង">Contact</a></div>
+<div><button class="toggle" id="lang">ខ្មែរ</button> <button class="menu" id="menu" aria-label="Open menu" aria-expanded="false">☰</button></div>
+</nav></header>
+<main>
+<section class="wrap hero" id="home">
+<span class="eyebrow" data-en="DIGITAL AGENCY · CAMBODIA" data-km="ឌីជីថលអេជិនស៊ី · កម្ពុជា">DIGITAL AGENCY · CAMBODIA</span>
+<h1><span data-en="Build Your" data-km="បង្កើត">Build Your</span><br><span class="grad" data-en="Digital Future." data-km="អនាគតឌីជីថល។">Digital Future.</span></h1>
+<p data-en="We help creators, startups and businesses build their online presence with modern websites and practical digital solutions." data-km="យើងជួយអ្នកបង្កើត ម្ចាស់អាជីវកម្មថ្មី និងអាជីវកម្មផ្សេងៗ បង្កើតវត្តមានលើអ៊ីនធឺណិតតាមរយៈ Website ទំនើប និងដំណោះស្រាយឌីជីថលជាក់ស្តែង។">We help creators, startups and businesses build their online presence with modern websites and practical digital solutions.</p>
+<div class="actions"><a class="btn primary" href="#contact" data-en="Start a Project ↗" data-km="ចាប់ផ្ដើមគម្រោង ↗">Start a Project ↗</a><a class="btn" href="#projects" data-en="Explore Our Work" data-km="មើលស្នាដៃ">Explore Our Work</a></div>
+</section>
+<section class="wrap section" id="services"><div class="heading reveal"><span class="eyetag" data-en="WHAT WE DO" data-km="អ្វីដែលយើងធ្វើ">WHAT WE DO</span><h2 data-en="Digital solutions built for your goals." data-km="ដំណោះស្រាយឌីជីថលសម្រាប់គោលដៅរបស់អ្នក។">Digital solutions built for your goals.</h2><p data-en="Practical services for people and businesses ready to grow online." data-km="សេវាជាក់ស្តែងសម្រាប់បុគ្គល និងអាជីវកម្មដែលចង់រីកចម្រើនលើអ៊ីនធឺណិត។">Practical services for people and businesses ready to grow online.</p></div>
+<div class="grid">
+<article class="card reveal"><div class="icon">🌐</div><h3 data-en="Website Development" data-km="ការអភិវឌ្ឍ Website">Website Development</h3><p data-en="Responsive landing pages, portfolios and business websites designed for different screens." data-km="Landing page, Portfolio និង Website អាជីវកម្មដែលសមស្របនឹងអេក្រង់ផ្សេងៗ។">Responsive landing pages, portfolios and business websites designed for different screens.</p></article>
+<article class="card reveal"><div class="icon">⚙️</div><h3 data-en="Web Apps & Tools" data-km="Web Apps និង Tools">Web Apps & Tools</h3><p data-en="Simple web tools and interactive experiences designed around your needs." data-km="ឧបករណ៍ Web សាមញ្ញ និងបទពិសោធន៍អន្តរកម្មតាមតម្រូវការរបស់អ្នក។">Simple web tools and interactive experiences designed around your needs.</p></article>
+<article class="card reveal"><div class="icon">🎨</div><h3 data-en="UI & Website Refresh" data-km="កែលម្អ UI និង Website">UI & Website Refresh</h3><p data-en="Improve layout, readability, mobile usability and visual identity." data-km="កែលម្អ Layout ភាពងាយអាន ការប្រើលើទូរស័ព្ទ និងអត្តសញ្ញាណរូបភាព។">Improve layout, readability, mobile usability and visual identity.</p></article>
+</div></section>
+<section class="wrap section" id="projects"><div class="heading reveal"><span class="eyetag" data-en="SELECTED WORK" data-km="គម្រោងជ្រើសរើស">SELECTED WORK</span><h2 data-en="Ideas made into experiences." data-km="បម្លែងគំនិតទៅជាបទពិសោធន៍។">Ideas made into experiences.</h2><p data-en="Explore concepts and sample layouts. Ask us about current project availability." data-km="មើលគំនិត និងគំរូរចនា។ សួរយើងអំពីស្ថានភាពគម្រោងបច្ចុប្បន្ន។">Explore concepts and sample layouts. Ask us about current project availability.</p></div>
+<div class="grid">
+<article class="card reveal"><div class="project-art">💻</div><span class="tag" data-en="CONCEPT" data-km="គំរូគំនិត">CONCEPT</span><h3 data-en="Creator Portfolio" data-km="Portfolio អ្នកបង្កើត">Creator Portfolio</h3><p data-en="A personal website concept to showcase skills, projects and work." data-km="គំនិត Website ផ្ទាល់ខ្លួនសម្រាប់បង្ហាញជំនាញ និងស្នាដៃ។">A personal website concept to showcase skills, projects and work.</p></article>
+<article class="card reveal"><div class="project-art">🛍️</div><span class="tag" data-en="CONCEPT" data-km="គំរូគំនិត">CONCEPT</span><h3 data-en="Digital Storefront" data-km="ហាងឌីជីថល">Digital Storefront</h3><p data-en="A sample catalog layout for presenting products and services online." data-km="គំរូកាតាឡុកសម្រាប់បង្ហាញផលិតផល និងសេវាកម្មលើអ៊ីនធឺណិត។">A sample catalog layout for presenting products and services online.</p></article>
+<article class="card reveal"><div class="project-art">📱</div><span class="tag" data-en="CONCEPT" data-km="គំរូគំនិត">CONCEPT</span><h3 data-en="Mobile Landing Page" data-km="Landing Page សម្រាប់ទូរស័ព្ទ">Mobile Landing Page</h3><p data-en="A responsive layout for introducing a product, service or idea." data-km="Layout សម្រាប់ទូរស័ព្ទ ដើម្បីណែនាំផលិតផល សេវាកម្ម ឬគំនិត។">A responsive layout for introducing a product, service or idea.</p></article>
+</div><p class="note" data-en="These cards show concepts, not claims of completed client work." data-km="កាតទាំងនេះបង្ហាញគំរូគំនិត មិនមែនជាការអះអាងថាជាស្នាដៃអតិថិជនដែលបានបញ្ចប់ទេ។">These cards show concepts, not claims of completed client work.</p>
+</section>
+<section class="wrap section" id="about"><div class="about reveal"><div><span class="eyetag" data-en="ABOUT NEXOR" data-km="អំពី NEXOR">ABOUT NEXOR</span><h2 data-en="Small team mindset. Big ideas." data-km="គំនិតធំៗ ចាប់ផ្ដើមពីជំហានតូចៗ។">Small team mindset. Big ideas.</h2><p data-en="NEXOR is an independent digital initiative focused on learning, building and improving useful online experiences. We value clear communication and practical solutions." data-km="NEXOR ជាគម្រោងឌីជីថលឯករាជ្យ ដែលផ្ដោតលើការរៀន បង្កើត និងកែលម្អបទពិសោធន៍អនឡាញដែលមានប្រយោជន៍។ យើងឱ្យតម្លៃលើការទំនាក់ទំនងច្បាស់លាស់ និងដំណោះស្រាយជាក់ស្តែង។">NEXOR is an independent digital initiative focused on learning, building and improving useful online experiences. We value clear communication and practical solutions.</p></div><div class="values"><div data-en="✦ Clear and modern design" data-km="✦ រចនាប័ទ្មទំនើប និងច្បាស់លាស់">✦ Clear and modern design</div><div data-en="⌘ Useful digital solutions" data-km="⌘ ដំណោះស្រាយឌីជីថលមានប្រយោជន៍">⌘ Useful digital solutions</div><div data-en="↗ Continuous improvement" data-km="↗ កែលម្អជាបន្តបន្ទាប់">↗ Continuous improvement</div></div></div></section>
+<section class="wrap section" id="contact"><div class="contact reveal"><div><h2 data-en="Have a project in mind?" data-km="មានគម្រោងក្នុងចិត្តមែនទេ?">Have a project in mind?</h2><p data-en="Tell us what you're planning. Let's start a conversation." data-km="ប្រាប់យើងអំពីអ្វីដែលអ្នកចង់បង្កើត។ តោះចាប់ផ្ដើមសន្ទនាគ្នា។">Tell us what you're planning. Let's start a conversation.</p></div><a class="btn primary" href="https://t.me/VOIDSOPHEAK" target="_blank" rel="noopener noreferrer" data-en="Contact on Telegram ↗" data-km="ទាក់ទងតាម Telegram ↗">Contact on Telegram ↗</a></div></section>
+</main>
+<footer><div class="wrap foot"><span>© <span id="year"></span> NEXOR. <span data-en="Digital ideas, built thoughtfully." data-km="គំនិតឌីជីថល បង្កើតដោយការយកចិត្តទុកដាក់។">Digital ideas, built thoughtfully.</span></span><a href="https://t.me/VOIDSOPHEAK" target="_blank" rel="noopener noreferrer">Telegram ↗</a></div></footer>
+<script>
+(()=>{let lang="en";const b=document.getElementById("lang"),menu=document.getElementById("menu"),links=document.getElementById("links");function setLang(v){lang=v;document.documentElement.lang=v;document.querySelectorAll("[data-en][data-km]").forEach(e=>e.textContent=e.dataset[v]);b.textContent=v==="en"?"ខ្មែរ":"English"}b.addEventListener("click",()=>setLang(lang==="en"?"km":"en"));menu.addEventListener("click",()=>{const open=links.classList.toggle("open");menu.setAttribute("aria-expanded",String(open));menu.textContent=open?"✕":"☰"});links.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{links.classList.remove("open");menu.setAttribute("aria-expanded","false");menu.textContent="☰"}));document.getElementById("year").textContent=new Date().getFullYear();const items=document.querySelectorAll(".reveal");if("IntersectionObserver"in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");observer.unobserve(e.target)}}),{threshold:.1});items.forEach(e=>observer.observe(e))}else items.forEach(e=>e.classList.add("show"))})();
+</script>
 </body>
 </html>
