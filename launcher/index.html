@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100d18">
+<title>NEXOR Minecraft Launcher</title>
+<style>
+:root{--bg:#0b0911;--card:#18151f;--line:#30283c;--cyan:#22e5ee;--purple:#9b45ff;--green:#7df52d;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 85% 0%,#39204d,transparent 45%),var(--bg);color:#f7f3ff;font:14px Arial,sans-serif}
+button,select,input{font:inherit}
+button{cursor:pointer;color:inherit}
+.layout{max-width:1450px;margin:auto;min-height:100vh;padding:18px;display:grid;grid-template-columns:65px 1fr;gap:16px}
+nav{position:sticky;top:18px;height:calc(100vh - 36px);background:#14111b;border:1px solid var(--line);border-radius:18px;padding:10px 6px;display:flex;align-items:center;flex-direction:column;gap:13px}
+.logo{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#100d18;font-weight:900;font-size:24px;border-radius:12px;padding:10px;margin-bottom:12px}
+.nav{width:43px;height:43px;border:1px solid transparent;border-radius:12px;background:transparent;color:#a49aaf;font-size:21px}
+.nav.active,.nav:hover{background:#302044;border-color:#604080;color:var(--cyan)}
+.spacer{flex:1}
+main{min-width:0}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:8px;color:#b9afc7;font-size:12px}
+.badge{border:1px solid #2c4939;background:#101b15;color:#9cffb1;padding:8px 10px;border-radius:8px}
+.dashboard{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:13px}
+.hero{min-height:310px;border:1px solid #413052;border-radius:20px;overflow:hidden;position:relative;display:flex;align-items:center;padding:28px;background:linear-gradient(90deg,#090b13 0%,#090b13ed 42%,#090b1340 100%),linear-gradient(145deg,#122b42,#34204f 55%,#123c3a)}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 42%,#21dce72b 42% 46%,transparent 46%),linear-gradient(45deg,transparent 52%,#9b45ff55 52% 57%,transparent 57%)}
+.hero:after{content:"";position:absolute;right:8%;bottom:0;width:37%;height:45%;background:linear-gradient(90deg,#265b50 0 25%,#347b61 25% 52%,#1e4254 52% 78%,#23304d 78%);clip-path:polygon(0 38%,25% 38%,25% 0,55% 0,55% 20%,78% 20%,78% 45%,100% 45%,100% 100%,0 100%);opacity:.9}
+.herotext{position:relative;z-index:1;max-width:530px}
+.kicker{color:var(--green);letter-spacing:3px;font-size:11px;font-weight:bold}
+h1{font-size:clamp(30px,4vw,46px);margin:14px 0 10px}
+h1 span{color:#a7ff63}
+p{color:#bcb4c8;line-height:1.6}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.launch{background:linear-gradient(100deg,#8afa2e,#37d92d);border:0;color:#10200a;font-weight:900;padding:15px 20px;border-radius:9px}
+.secondary{background:#191321e8;border:1px solid #544263;border-radius:9px;padding:13px 17px}
+.profile,.panel,.stat,.news{background:var(--card);border:1px solid var(--line);border-radius:17px}
+.profile{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px}
+.avatar{font-size:52px;background:linear-gradient(135deg,#463750,#181522);border:1px solid #554360;border-radius:18px;padding:12px}
+.profile h3{margin:10px 0 3px;font-size:18px}
+.muted{font-size:11px;color:#a69bad}
+.manage{width:100%;margin-top:18px;padding:11px;background:#321c49;border:1px solid #56316f;border-radius:8px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+.stat{padding:13px;min-width:0}
+.stat strong{display:block;font-size:13px}
+.stat small{display:block;color:#a69bad;margin-top:5px;font-size:11px}
+.heading{display:flex;align-items:center;justify-content:space-between;margin:22px 0 11px}
+.heading h2{font-size:14px;margin:0;letter-spacing:1px}
+.textbtn{background:none;border:0;color:var(--cyan)}
+.newsgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.news{overflow:hidden}
+.art{height:105px;background:linear-gradient(135deg,#192b43,#3c2055 55%,#1d625d);position:relative}
+.art:after{content:"";position:absolute;inset:0;background:linear-gradient(40deg,transparent 40%,#23e4e533 40% 48%,transparent 48%),linear-gradient(130deg,transparent 55%,#a23dff66 55% 70%,transparent 70%)}
+.copy{padding:12px}
+.copy strong{font-size:12px}
+.copy p{font-size:11px;margin-bottom:0}
+.view{display:none}
+.view.active{display:block}
+.panel{padding:18px;margin-top:12px}
+.field{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:15px 0}
+select,input[type=text]{background:#100d17;border:1px solid #493953;border-radius:7px;padding:10px;max-width:65%;color:white}
+input[type=range]{width:100%;accent-color:var(--purple)}
+.item{display:flex;align-items:center;gap:12px;padding:14px;border-bottom:1px solid var(--line)}
+.item:last-child{border:0}
+.item span{flex:1}
+.note{color:#d8c69a;font-size:12px;margin-top:14px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#21182d;border:1px solid #61407c;padding:13px 18px;border-radius:10px;display:none;max-width:90%;z-index:5}
+.toast.show{display:block}
+@media(max-width:700px){
+.layout{display:block;padding:12px 12px 88px}
+nav{position:fixed;z-index:4;top:auto;bottom:0;left:0;right:0;width:100%;height:auto;min-height:65px;border-radius:18px 18px 0 0;flex-direction:row;justify-content:space-around;padding:8px 12px calc(8px + env(safe-area-inset-bottom));gap:4px;background:#130f1af5;backdrop-filter:blur(12px)}
+.logo,.spacer{display:none}
+.nav{width:43px;height:43px}
+.top{height:38px}
+.dashboard{grid-template-columns:1fr}
+.hero{min-height:290px;padding:20px 17px}
+.hero:after{right:0;width:40%;height:32%;opacity:.65}
+.profile{display:grid;grid-template-columns:65px 1fr;text-align:left;justify-items:start;column-gap:12px;padding:14px}
+.avatar{font-size:34px;padding:8px;grid-row:1/3}
+.profile h3{align-self:end;margin:4px 0}
+.profile .muted{align-self:start}
+.manage{grid-column:1/3;margin-top:12px}
+.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+.stat:last-child{grid-column:1/3}
+.newsgrid{grid-template-columns:1fr}
+.news{display:grid;grid-template-columns:105px 1fr}
+.art{height:100%;min-height:120px}
+.copy p{font-size:12px}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav>
+<div class="logo">N</div>
+<button class="nav active" data-page="home" title="Home">◉</button>
+<button class="nav" data-page="accounts" title="Profile">♙</button>
+<button class="nav" data-page="mods" title="Mods">▦</button>
+<button class="nav" data-page="versions" title="Versions">▣</button>
+<div class="spacer"></div>
+<button class="nav" data-page="settings" title="Settings">⚙</button>
+</nav>
+<main>
+<header class="top"><strong>NEXOR <span style="color:var(--cyan)">/ LAUNCHER</span></strong><span class="badge">● LOCAL UI DEMO</span></header>
+<section class="view active" id="home">
+<div class="dashboard">
+<div>
+<div class="hero"><div class="herotext">
+<div class="kicker">NEXOR • CUSTOM MODPACK</div>
+<h1>Minecraft <span id="hero-version">1.20.1</span></h1>
+<p>Your next adventure starts here. Manage versions, mods and your player profile from one dashboard.</p>
+<div class="actions"><button class="launch" onclick="notify('Demo only — a Minecraft engine is needed to launch the game.')">▶ &nbsp; LAUNCH <span id="launch-version">1.20.1</span></button><button class="secondary" onclick="page('versions')">↻ &nbsp; Versions</button></div>
+<p class="muted">JAVA EDITION • LOCAL UI DEMO</p>
+</div></div>
+<div class="stats">
+<div class="stat">▤ <strong id="stat-version">1.20.1 • Selected</strong><small>Current version</small></div>
+<div class="stat">♧ <strong id="stat-ram">4 GB RAM</strong><small>Memory setting</small></div>
+<div class="stat">✧ <strong id="stat-mods">3 Enabled</strong><small>Mod toggles</small></div>
+</div>
+</div>
+<aside class="profile"><div class="avatar">🧑🏻‍🚀</div><h3 id="profile-name">doxy</h3><div class="muted">NEXOR PLAYER PROFILE</div><button class="manage" onclick="page('accounts')">Manage Account ↗</button></aside>
+</div>
+<div class="heading"><h2>DISCOVER & UPDATES</h2><button class="textbtn" onclick="notify('These are sample news cards.')">VIEW ALL →</button></div>
+<div class="newsgrid">
+<article class="news"><div class="art"></div><div class="copy"><strong>Launcher Release Announcement</strong><p>A fresh home for Minecraft adventures, with versions and mods in one place.</p></div></article>
+<article class="news"><div class="art"></div><div class="copy"><strong>New Custom Combat Mod</strong><p>Explore add-ons and personalize your next world.</p></div></article>
+<article class="news"><div class="art"></div><div class="copy"><strong>New Cosmetics Update</strong><p>Give your profile a fresh visual theme.</p></div></article>
+</div>
+</section>
+<section class="view" id="versions">
+<h1>Versions</h1><p>Choose your game version.</p>
+<div class="panel"><div class="field"><label for="version">Game version</label><select id="version"><option>1.20.1</option><option>1.20.4</option><option>1.19.4</option><option>1.18.2</option><option>1.16.5</option><option>Latest Release</option></select></div><button class="launch" onclick="applyVersion()">Apply Version</button><p class="note">Selecting a version updates the UI only. Game installation needs a compatible launcher engine.</p></div>
+</section>
+<section class="view" id="settings">
+<h1>Settings</h1><p>Customize your launcher UI.</p>
+<div class="panel"><div class="field"><label for="ram">RAM allocation</label><strong><span id="ram-value">4</span> GB</strong></div><input id="ram" type="range" min="1" max="8" value="4"><div class="field"><label for="theme">Accent theme</label><select id="theme"><option value="cyan">Cyan + Purple</option><option value="green">Neon Green</option><option value="pink">Pink + Violet</option></select></div><p class="note">RAM is a visual preference in this prototype; it does not allocate real game memory.</p></div>
+</section>
+<section class="view" id="mods">
+<h1>Mods Library</h1><p>Toggle demo mod entries.</p>
+<div class="panel">
+<label class="item"><span><strong>Sodium</strong><br><small class="muted">Rendering optimization</small></span><input type="checkbox" class="mod" checked></label>
+<label class="item"><span><strong>Fabric API</strong><br><small class="muted">Mod dependency</small></span><input type="checkbox" class="mod" checked></label>
+<label class="item"><span><strong>Just Enough Items</strong><br><small class="muted">Recipe browser</small></span><input type="checkbox" class="mod" checked></label>
+<label class="item"><span><strong>JourneyMap</strong><br><small class="muted">World map</small></span><input type="checkbox" class="mod"></label>
+<p class="note">Toggles do not install or remove actual mod files.</p></div>
+</section>
+<section class="view" id="accounts">
+<h1>Player Profile</h1><p>Local profile preview.</p>
+<div class="panel"><div class="avatar">🧑🏻‍🚀</div><div class="field"><label for="username">Display name</label><input id="username" type="text" maxlength="16" value="doxy"></div><button class="launch" onclick="saveProfile()">Save Profile</button><p class="note">Real Microsoft login requires secure OAuth. Never enter your password into this demo.</p></div>
+</section>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+function page(id){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===id));window.scrollTo(0,0)}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>page(b.dataset.page)));
+let timer;
+function notify(msg){let t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>t.classList.remove('show'),2600)}
+function applyVersion(){let v=document.getElementById('version').value;document.getElementById('hero-version').textContent=v;document.getElementById('launch-version').textContent=v;document.getElementById('stat-version').textContent=v+' • Selected';page('home');notify('Selected version: '+v+' (UI demo)')}
+document.getElementById('ram').addEventListener('input',e=>{document.getElementById('ram-value').textContent=e.target.value;document.getElementById('stat-ram').textContent=e.target.value+' GB RAM'});
+function updateMods(){document.getElementById('stat-mods').textContent=[...document.querySelectorAll('.mod')].filter(x=>x.checked).length+' Enabled'}
+document.querySelectorAll('.mod').forEach(x=>x.addEventListener('change',updateMods));
+document.getElementById('theme').addEventListener('change',e=>{let r=document.documentElement;if(e.target.value==='green'){r.style.setProperty('--cyan','#9cff38');r.style.setProperty('--purple','#32d65c')}else if(e.target.value==='pink'){r.style.setProperty('--cyan','#ff6ce5');r.style.setProperty('--purple','#8f4cff')}else{r.style.setProperty('--cyan','#22e5ee');r.style.setProperty('--purple','#9b45ff')}});
+function saveProfile(){let n=document.getElementById('username').value.trim().slice(0,16)||'Player';document.getElementById('profile-name').textContent=n;notify('Profile updated: '+n)}
+</script>
+</body>
+                      </html>
+                        
